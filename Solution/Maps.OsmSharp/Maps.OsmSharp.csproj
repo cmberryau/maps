@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{16F96681-C1E3-4BE1-9EAC-446EB33E080A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Maps.OsmSharp</RootNamespace>
+    <AssemblyName>Maps.OsmSharp</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Maps.OsmSharp.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Maps.OsmSharp.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ObfuscatedRelease|AnyCPU'">
+    <OutputPath>bin\ObfuscatedRelease\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>bin\Release\Maps.OsmSharp.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="OsmSharp, Version=1.0.2.9999, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\OsmSharp.NET3.5\OsmSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="OsmSharp.Osm, Version=1.0.2.9999, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\OsmSharp.NET3.5\OsmSharp.Osm.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Collections\ReadOnlyOsmGeoCollection.cs" />
+    <Compile Include="Geographical\Features\DefaultOsmGeoTranslator.cs" />
+    <Compile Include="Geographical\Features\OsmGeoTranslator.cs" />
+    <Compile Include="Geographical\Features\IOsmSharpGeoTranslator.cs" />
+    <Compile Include="Geographical\Features\OsmSharpFeatureProvider.cs" />
+    <Compile Include="Geographical\Features\OsmSharpFeatureSource.cs" />
+    <Compile Include="Geographical\Extensions\GeoCoordinateBoxExtensions.cs" />
+    <Compile Include="Geographical\Extensions\GeocoordinateExtensions.cs" />
+    <Compile Include="Geographical\Extensions\Geodetic2DExtensions.cs" />
+    <Compile Include="Geographical\Extensions\GeodeticBox2DExtensions.cs" />
+    <Compile Include="Geographical\Extensions\NodeExtensions.cs" />
+    <Compile Include="Geographical\Extensions\OsmGeoExtensions.cs" />
+    <Compile Include="Geographical\Places\CategoriesMap.cs" />
+    <Compile Include="Geographical\Places\OsmSharpPlaceProvider.cs" />
+    <Compile Include="Geographical\Places\OsmSharpPlaceSource.cs" />
+    <Compile Include="Geographical\Places\PlaceCategoryExtensions.cs" />
+    <Compile Include="Geographical\Extensions\RelationExtensions.cs" />
+    <Compile Include="Geographical\Extensions\WayExtensions.cs" />
+    <Compile Include="OsmSharpProvider.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Maps\Maps.csproj">
+      <Project>{CE31D321-82D9-4EA3-B52D-EF711139AAE1}</Project>
+      <Name>Maps</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent Condition="'$(Configuration)|$(Platform)' != 'ObfuscatedRelease|AnyCPU'">
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

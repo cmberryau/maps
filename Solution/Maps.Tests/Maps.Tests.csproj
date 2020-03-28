@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1240AF73-59FF-4CB8-AAEA-9647E10010AD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Maps.Tests</RootNamespace>
+    <AssemblyName>Maps.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ObfuscatedRelease|AnyCPU'">
+    <OutputPath>bin\ObfuscatedRelease\</OutputPath>
+    <DefineConstants>TRACE;OBFUSCATED_RELEASE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ClipperLib">
+      <HintPath>..\Dependencies\ClipperLib.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net35-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.9.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.9.0\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="protobuf-net, Version=2.3.3.0, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
+      <HintPath>..\packages\protobuf-net.2.3.3\lib\net40\protobuf-net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.XML" />
+    <Reference Include="Triangle">
+      <HintPath>..\Dependencies\Triangle.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Extensions\GuidExtensionsTests.cs" />
+    <Compile Include="Geographical\Features\FeatureSourceTests.cs" />
+    <Compile Include="Geographical\Features\SegmentTests.cs" />
+    <Compile Include="Geographical\Features\TiledFeatureSourceTests.cs" />
+    <Compile Include="Geographical\Features\TiledFeatureTargetTests.cs" />
+    <Compile Include="Geographical\Geodetic2dTests.cs" />
+    <Compile Include="Geographical\GeodeticBox2dTests.cs" />
+    <Compile Include="Geographical\GeodeticLineSegment2dTests.cs" />
+    <Compile Include="Geographical\GeodeticLineStrip2dTests.cs" />
+    <Compile Include="Geographical\GeodeticPolygon2dTests.cs" />
+    <Compile Include="Geographical\Places\PlaceSourceTests.cs" />
+    <Compile Include="Geographical\Projection\LambertAzimuthalEqualAreaProjectionTests.cs" />
+    <Compile Include="Geographical\Simplification\RamerDouglasPeukerTests.cs" />
+    <Compile Include="Geographical\Tiles\TmsTileRangeTests.cs" />
+    <Compile Include="Geographical\Tiles\TmsTileTests.cs" />
+    <Compile Include="Geometry\Bounds2dTests.cs" />
+    <Compile Include="Geometry\Box2dTests.cs" />
+    <Compile Include="Geometry\ClipperTests.cs" />
+    <Compile Include="Geometry\EllipsoidTests.cs" />
+    <Compile Include="Geometry\Line2dTests.cs" />
+    <Compile Include="Geometry\LineSegment2dTests.cs" />
+    <Compile Include="Geometry\LineStrip2dTests.cs" />
+    <Compile Include="Geometry\MeshTests.cs" />
+    <Compile Include="Geometry\TriangleTests.cs" />
+    <Compile Include="IO\FeatureReaderTests.cs" />
+    <Compile Include="IO\FeatureWriterTests.cs" />
+    <Compile Include="IO\SingleFeatureReaderTests.cs" />
+    <Compile Include="IO\Features\BinaryAreaTests.cs" />
+    <Compile Include="IO\Features\BinaryFeatureTests.cs" />
+    <Compile Include="IO\Places\BinaryPlaceTests.cs" />
+    <Compile Include="IO\BinaryCoordinateTests.cs" />
+    <Compile Include="IO\Collections\BinaryFeatureCollectionTests.cs" />
+    <Compile Include="IO\SingleFeatureWriterTests.cs" />
+    <Compile Include="IO\Features\BinaryRoadTests.cs" />
+    <Compile Include="MathdTests.cs" />
+    <Compile Include="MathfTests.cs" />
+    <Compile Include="Matrix2Tests.cs" />
+    <Compile Include="Matrix3Tests.cs" />
+    <Compile Include="Matrix4Tests.cs" />
+    <Compile Include="Geometry\Polygon2dTests.cs" />
+    <Compile Include="QuaterniondTests.cs" />
+    <Compile Include="TransformdTests.cs" />
+    <Compile Include="Vector3dTests.cs" />
+    <Compile Include="Vector3fTests.cs" />
+    <Compile Include="TestUtilities.cs" />
+    <Compile Include="Vector2dTests.cs" />
+    <Compile Include="Vector2fTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Maps\Maps.csproj">
+      <Project>{CE31D321-82D9-4EA3-B52D-EF711139AAE1}</Project>
+      <Name>Maps</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

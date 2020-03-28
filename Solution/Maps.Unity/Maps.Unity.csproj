@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{40DFB874-DD96-4979-88DA-61B644CC220B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Maps.Unity</RootNamespace>
+    <AssemblyName>Maps.Unity</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Maps.Unity.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Maps.Unity.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ObfuscatedRelease|AnyCPU'">
+    <OutputPath>bin\ObfuscatedRelease\</OutputPath>
+    <DefineConstants>TRACE;OBFUSCATED_RELEASE; NET35</DefineConstants>
+    <DocumentationFile>bin\Release\Maps.Unity.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ionic.Zlib">
+      <HintPath>..\Dependencies\Ionic.Zlib\Ionic.Zlib.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net35-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.XML" />
+    <Reference Include="UnityEngine">
+      <HintPath Condition="Exists('C:\Program Files\Unity\Editor\Data\Managed')">C:\Program Files\Unity\Editor\Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath Condition="Exists('/Applications/Unity/Unity.app/Contents/Managed')">/Applications/Unity/Unity.app/Contents/Managed/UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath Condition="Exists('C:\Program Files\Unity\Editor\Data\Managed')">C:\Program Files\Unity\Editor\Data\UnityExtensions\Unity\GUISystem\UnityEngine.UI.dll</HintPath>
+      <HintPath Condition="Exists('/Applications/Unity/Unity.app/Contents/Managed')">/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Appearance\IMaterialsModel.cs" />
+    <Compile Include="Appearance\ITexture2DModel.cs" />
+    <Compile Include="Appearance\MaterialGenerator.cs" />
+    <Compile Include="Appearance\MaterialMap.cs" />
+    <Compile Include="Appearance\MaterialsModel.cs" />
+    <Compile Include="Appearance\MaterialsModelImpl.cs" />
+    <Compile Include="Appearance\Texture2DModelImpl.cs" />
+    <Compile Include="Appearance\Texture2DModel.cs" />
+    <Compile Include="Example\Bounds2dIntersectionExample.cs" />
+    <Compile Include="Example\Box2dClampingExample.cs" />
+    <Compile Include="Example\Box2dClippingExample.cs" />
+    <Compile Include="Example\PolygonClampingExample.cs" />
+    <Compile Include="Example\PolygonSimplificationExample.cs" />
+    <Compile Include="Interaction\Input\DesktopInputHandler.cs" />
+    <Compile Include="Interaction\Input\InputHandler.cs" />
+    <Compile Include="Interaction\TargetImageInputForwarder.cs" />
+    <Compile Include="Interaction\Response\IPointerDragResponder.cs" />
+    <Compile Include="Interaction\Response\IPointerClickResponder.cs" />
+    <Compile Include="Interaction\Response\IKeyboardPressResponder.cs" />
+    <Compile Include="Interaction\Response\IPointerScrollResponder.cs" />
+    <Compile Include="UI\IPoolableSprite.cs" />
+    <Compile Include="UI\PoolableSprite.cs" />
+    <Compile Include="UI\PoolableSpriteImpl.cs" />
+    <Compile Include="UI\Sprite.cs" />
+    <Compile Include="UI\SpriteCreator.cs" />
+    <Compile Include="Utility\SpriteExtractor.cs" />
+    <Compile Include="Example\TransformdTest.cs" />
+    <Compile Include="Example\TriangleLineTessellation2dExample.cs" />
+    <Compile Include="Extensions\Bounds3dExtensions.cs" />
+    <Compile Include="Extensions\CanvasExtensions.cs" />
+    <Compile Include="Extensions\ColorExtensions.cs" />
+    <Compile Include="Extensions\ColorfExtensions.cs" />
+    <Compile Include="Extensions\GameObjectExtensions.cs" />
+    <Compile Include="Extensions\ImageExtensions.cs" />
+    <Compile Include="Extensions\MeshExtensions.cs" />
+    <Compile Include="Extensions\QuaterniondExtensions.cs" />
+    <Compile Include="Extensions\QuaternionExtensions.cs" />
+    <Compile Include="Extensions\Texture2DExtensions.cs" />
+    <Compile Include="Extensions\TopologyExtensions.cs" />
+    <Compile Include="Extensions\TransformExtensions.cs" />
+    <Compile Include="Extensions\Vector4dExtensions.cs" />
+    <Compile Include="Features\DynamicFeatureContainer.cs" />
+    <Compile Include="Features\DynamicFeatureContainerImpl.cs" />
+    <Compile Include="Features\DynamicFeatureManager.cs" />
+    <Compile Include="Features\DynamicFeatureManagerImpl.cs" />
+    <Compile Include="IPrefabPool.cs" />
+    <Compile Include="MapImpl.cs" />
+    <Compile Include="Map.cs" />
+    <Compile Include="PoolableGameObject.cs" />
+    <Compile Include="PoolableGameObjectImpl.cs" />
+    <Compile Include="PrefabPool.cs" />
+    <Compile Include="PrefabPoolImpl.cs" />
+    <Compile Include="Rendering\ITranslator.cs" />
+    <Compile Include="Rendering\TranslatorFactory.cs" />
+    <Compile Include="Rendering\Translator.cs" />
+    <Compile Include="UI\Icon.cs" />
+    <Compile Include="UI\IconCreator.cs" />
+    <Compile Include="UI\IPoolableIcon.cs" />
+    <Compile Include="UI\IPoolableLabel.cs" />
+    <Compile Include="UI\Label.cs" />
+    <Compile Include="UI\MapCanvas.cs" />
+    <Compile Include="UI\MapCanvasImpl.cs" />
+    <Compile Include="UI\PoolableIcon.cs" />
+    <Compile Include="UI\PoolableIconImpl.cs" />
+    <Compile Include="UI\PoolableLabel.cs" />
+    <Compile Include="UI\PoolableLabelImpl.cs" />
+    <Compile Include="UI\PoolableUIElement.cs" />
+    <Compile Include="UI\PoolableUIElementImpl.cs" />
+    <Compile Include="UI\PrefabModel.cs" />
+    <Compile Include="UI\UIElement.cs" />
+    <Compile Include="UI\LabelCreator.cs" />
+    <Compile Include="UI\UIElementCreator.cs" />
+    <Compile Include="UI\UIElementCreatorMap.cs" />
+    <Compile Include="UI\UIElementFactory.cs" />
+    <Compile Include="UI\UIElementRendererImpl.cs" />
+    <Compile Include="Configuration.cs" />
+    <Compile Include="Extensions\Bounds2dExtensions.cs" />
+    <Compile Include="Extensions\Box2dExtensions.cs" />
+    <Compile Include="Extensions\GeodeticBox2dExtensions.cs" />
+    <Compile Include="Extensions\LineSegment2dExtensions.cs" />
+    <Compile Include="Extensions\Matrix4x4Extensions.cs" />
+    <Compile Include="Extensions\Vector2dExtensions.cs" />
+    <Compile Include="Logging\LoggingConfiguration.cs" />
+    <Compile Include="Lod\MapLod.cs" />
+    <Compile Include="Lod\MapLodImpl.cs" />
+    <Compile Include="Lod\MapLodTree.cs" />
+    <Compile Include="Lod\MapLodTreeImpl.cs" />
+    <Compile Include="Example\MapAPIExample.cs" />
+    <Compile Include="Rendering\MapCamera.cs" />
+    <Compile Include="Rendering\MapCameraImpl.cs" />
+    <Compile Include="UI\UIElementRenderer.cs" />
+    <Compile Include="Rendering\RaycastedGlobe.cs" />
+    <Compile Include="Extensions\Geodetic2dExtensions.cs" />
+    <Compile Include="Extensions\Geodetic3dExtensions.cs" />
+    <Compile Include="Extensions\Vector3dExtensions.cs" />
+    <Compile Include="Extensions\Vector3Extensions.cs" />
+    <Compile Include="Extensions\Vector3fExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Threading\Coroutines.cs" />
+    <Compile Include="Geographical\Tiles\DisplayTile.cs" />
+    <Compile Include="Geographical\Tiles\DisplayTileImpl.cs" />
+    <Compile Include="IO\IOUtility.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Maps.Data\Maps.Data.csproj">
+      <Project>{1C88F452-EDB9-499A-9B6E-03CCBB96D3B7}</Project>
+      <Name>Maps.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Maps\Maps.csproj">
+      <Project>{ce31d321-82d9-4ea3-b52d-ef711139aae1}</Project>
+      <Name>Maps</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent Condition="'$(Configuration)|$(Platform)' != 'ObfuscatedRelease|AnyCPU'">python $(SolutionDir)postbuild.py -s $(TargetDir) -n $(TargetName) -t "..\MapsExample\Assets\Plugins\Maps"</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>python $(SolutionDir)postbuild.py -s $(TargetDir) -n $(TargetName) -t "..\MapsExample\Assets\Plugins\Maps"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

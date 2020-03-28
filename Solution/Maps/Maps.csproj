@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CE31D321-82D9-4EA3-B52D-EF711139AAE1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Maps</RootNamespace>
+    <AssemblyName>Maps</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NET35</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Maps.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NET35</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Maps.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ObfuscatedRelease|AnyCPU'">
+    <OutputPath>bin\ObfuscatedRelease\</OutputPath>
+    <DefineConstants>TRACE;OBFUSCATED_RELEASE; NET35</DefineConstants>
+    <DocumentationFile>bin\Release\Maps.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ClipperLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\ClipperLib.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net35-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="protobuf-net, Version=2.3.3.0, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
+      <HintPath>..\packages\protobuf-net.2.3.3\lib\net40\protobuf-net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.XML" />
+    <Reference Include="Triangle">
+      <HintPath>..\Dependencies\Triangle.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Appearance\AreaPropertyParser.cs" />
+    <Compile Include="Appearance\AreaAppearanceTarget.cs" />
+    <Compile Include="Appearance\FeaturePropertyParser.cs" />
+    <Compile Include="Appearance\IconAppearance.cs" />
+    <Compile Include="Appearance\IIconAppearance.cs" />
+    <Compile Include="Appearance\ILabelAppearance.cs" />
+    <Compile Include="Appearance\ISpriteAppearance.cs" />
+    <Compile Include="Appearance\IUIElement.cs" />
+    <Compile Include="Appearance\IRenderableAppearance.cs" />
+    <Compile Include="Appearance\IUIRenderableAppearance.cs" />
+    <Compile Include="Appearance\IUIElementAppearanceVisitor.cs" />
+    <Compile Include="Appearance\LabelAppearance.cs" />
+    <Compile Include="Appearance\MapAppearance.cs" />
+    <Compile Include="Appearance\DynamicFeatureAppearance.cs" />
+    <Compile Include="Appearance\MeshAppearance.cs" />
+    <Compile Include="Appearance\PlacePropertyParser.cs" />
+    <Compile Include="Appearance\IMeshAppearance.cs" />
+    <Compile Include="Appearance\SegmentPropertyParser.cs" />
+    <Compile Include="Appearance\SpriteAppearance.cs" />
+    <Compile Include="Appearance\UIRenderableAppearance.cs" />
+    <Compile Include="GeodeticController.cs" />
+    <Compile Include="Geographical\Features\AreaAppearance.cs" />
+    <Compile Include="Appearance\DefaultMapAppearance.cs" />
+    <Compile Include="Geographical\Features\CarIcon.cs" />
+    <Compile Include="Geographical\Features\FeatureAppearance.cs" />
+    <Compile Include="Appearance\IMapAppearance.cs" />
+    <Compile Include="Appearance\PlaceAppearanceTarget.cs" />
+    <Compile Include="Appearance\Properties\BoolProperty.cs" />
+    <Compile Include="Appearance\Properties\PropertyParserBase.cs" />
+    <Compile Include="Appearance\SegmentAppearanceTarget.cs" />
+    <Compile Include="Appearance\TiledMapAppearance.cs" />
+    <Compile Include="Geographical\Features\Icon.cs" />
+    <Compile Include="Geographical\Features\PlaceAppearance.cs" />
+    <Compile Include="Appearance\Properties\ColorProperty.cs" />
+    <Compile Include="Appearance\Properties\Int32Property.cs" />
+    <Compile Include="Appearance\Properties\IPropertyVisitor.cs" />
+    <Compile Include="Appearance\Properties\NameProperty.cs" />
+    <Compile Include="Appearance\Properties\Property.cs" />
+    <Compile Include="Appearance\Properties\SingleProperty.cs" />
+    <Compile Include="Appearance\Properties\StringProperty.cs" />
+    <Compile Include="Appearance\Properties\DoubleProperty.cs" />
+    <Compile Include="Geographical\Features\RouteSection.cs" />
+    <Compile Include="Geographical\Features\SegmentAppearance.cs" />
+    <Compile Include="Collections\IAutoDictionary.cs" />
+    <Compile Include="Collections\AutoDictionary.cs" />
+    <Compile Include="Collections\MultiBiDirectionalMap.cs" />
+    <Compile Include="Collections\ReadOnlyList.cs" />
+    <Compile Include="Extensions\ListExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Geographical\Combining\FeatureCombiner.cs" />
+    <Compile Include="Geographical\Features\AreaCategory.cs" />
+    <Compile Include="Geographical\Features\DynamicFeature.cs" />
+    <Compile Include="Geographical\Features\DynamicFeatureCategory.cs" />
+    <Compile Include="Geographical\Features\DynamicFeatureManagerBase.cs" />
+    <Compile Include="Geographical\Features\FeatureCollection.cs" />
+    <Compile Include="Geographical\Features\IDynamicFeature.cs" />
+    <Compile Include="Geographical\Features\IDynamicFeatureManager.cs" />
+    <Compile Include="Geographical\Features\IFeatureCollection.cs" />
+    <Compile Include="Geographical\Projection\IProjection.cs" />
+    <Compile Include="Geographical\Projection\Projection.cs" />
+    <Compile Include="Geographical\Projection\Projection2d.cs" />
+    <Compile Include="Geographical\Projection\WebMercatorProjection.cs" />
+    <Compile Include="Geographical\Simplification\GeodeticSimplifier2d.cs" />
+    <Compile Include="Geometry\Ray2d.cs" />
+    <Compile Include="Geometry\Tessellation\TriangleLineTessellator2d.cs" />
+    <Compile Include="IGeodeticallyControllable.cs" />
+    <Compile Include="IGeodeticController.cs" />
+    <Compile Include="IKeyed.cs" />
+    <Compile Include="IO\BinarySourceMeta.cs" />
+    <Compile Include="IO\BinaryTiledSourceMeta.cs" />
+    <Compile Include="IO\ISideData.cs" />
+    <Compile Include="IO\Geographical\BinaryGeodeticBox2d.cs" />
+    <Compile Include="IO\IBinarySerializable.cs" />
+    <Compile Include="IO\ITable.cs" />
+    <Compile Include="ITiledMap.cs" />
+    <Compile Include="Rendering\CameraFrustum.cs" />
+    <Compile Include="Rendering\RenderableAppearance.cs" />
+    <Compile Include="Rendering\UISprite.cs" />
+    <Compile Include="SourceMeta.cs" />
+    <Compile Include="TiledSourceMeta.cs" />
+    <Compile Include="Geographical\Filtering\AndFilter.cs" />
+    <Compile Include="Geographical\Filtering\NotFilter.cs" />
+    <Compile Include="Geographical\Features\SegmentCategory.cs" />
+    <Compile Include="Geographical\Features\IFeatureVisitor.cs" />
+    <Compile Include="Geographical\Filtering\AreaGeodeticAreaFilter.cs" />
+    <Compile Include="Geographical\Filtering\OrFilter.cs" />
+    <Compile Include="Geographical\Filtering\CompoundFilter.cs" />
+    <Compile Include="Geographical\Filtering\FeatureFilter.cs" />
+    <Compile Include="Geographical\Filtering\AreaNullFilter.cs" />
+    <Compile Include="Geographical\Filtering\PlaceNullFilter.cs" />
+    <Compile Include="Geographical\Filtering\SegmentNullFilter.cs" />
+    <Compile Include="Geographical\Filtering\AreaPassthroughFilter.cs" />
+    <Compile Include="Geographical\Filtering\PlacePassthroughFilter.cs" />
+    <Compile Include="Geographical\Filtering\SegmentPassthroughFilter.cs" />
+    <Compile Include="Geographical\GeodeticPolygon2d.cs" />
+    <Compile Include="Geographical\Projection\LambertAzimuthalEqualAreaProjection.cs" />
+    <Compile Include="Geographical\Filtering\AreaCategoryFilter.cs" />
+    <Compile Include="Geographical\Filtering\PlaceCategoryFilter.cs" />
+    <Compile Include="Geographical\Filtering\SegmentCategoryFilter.cs" />
+    <Compile Include="Geographical\Simplification\FeatureSimplifier.cs" />
+    <Compile Include="Geographical\Simplification\PassThroughSimplifier.cs" />
+    <Compile Include="Geographical\Simplification\VisvalingamWhyattSimplifier.cs" />
+    <Compile Include="IO\Features\BinaryAreaCategory.cs" />
+    <Compile Include="IO\Features\BinarySegmentCategory.cs" />
+    <Compile Include="IO\Places\BinaryPlaceCategory.cs" />
+    <Compile Include="Geometry\Polygon2d.cs" />
+    <Compile Include="Geographical\Simplification\IGeodeticSimplifier2d.cs" />
+    <Compile Include="Geographical\Simplification\RamerDouglasPeukerSimplifier.cs" />
+    <Compile Include="Geometry\Tessellation\AreaTessellator.cs" />
+    <Compile Include="Geometry\Tessellation\SegmentTessellator.cs" />
+    <Compile Include="Geographical\Tiles\DisplayTileBase.cs" />
+    <Compile Include="Geographical\Tiles\IDisplayTile.cs" />
+    <Compile Include="Geometry\Line3d.cs" />
+    <Compile Include="Geometry\Plane3d.cs" />
+    <Compile Include="Geometry\Ray3d.cs" />
+    <Compile Include="Geometry\Tessellation\ILineTessellator.cs" />
+    <Compile Include="Geometry\Tessellation\IPointTessellator.cs" />
+    <Compile Include="Geometry\Tessellation\IPolygonTessellator.cs" />
+    <Compile Include="Geometry\Tessellation\TrianglePolygonTessellator2d.cs" />
+    <Compile Include="Geometry\Tessellation\TriangleTessellatorEllipsoidal.cs" />
+    <Compile Include="Rendering\IMapCamera.cs" />
+    <Compile Include="MapBase.cs" />
+    <Compile Include="Rendering\MapCameraBase.cs" />
+    <Compile Include="TiledMap.cs" />
+    <Compile Include="Extensions\GuidExtensions.cs" />
+    <Compile Include="Geographical\CardinalDirection.cs" />
+    <Compile Include="Geographical\Features\IFeatureProvider.cs" />
+    <Compile Include="Geographical\Features\IFeatureTarget.cs" />
+    <Compile Include="Geographical\Features\ITiledFeatureSource.cs" />
+    <Compile Include="Geographical\Features\ITiledFeatureTarget.cs" />
+    <Compile Include="Geographical\GeodeticBox2d.cs" />
+    <Compile Include="Geographical\Geocoding\ReverseGeocodingResult.cs" />
+    <Compile Include="Geographical\Geodetic2d.cs" />
+    <Compile Include="Geographical\Geodetic3d.cs" />
+    <Compile Include="Geographical\GeodeticLineSegment2d.cs" />
+    <Compile Include="Geographical\GeodeticLineStrip2d.cs" />
+    <Compile Include="Geographical\Places\IPlaceProvider.cs" />
+    <Compile Include="Geographical\Places\IPlaceSource.cs" />
+    <Compile Include="Geographical\Places\PlaceCategory.cs" />
+    <Compile Include="Geographical\Places\Place.cs" />
+    <Compile Include="Geographical\Projection\EllipsoidalProjection.cs" />
+    <Compile Include="Geographical\Projection\IdentityProjection.cs" />
+    <Compile Include="Geographical\Tiles\TmsTileSource.cs" />
+    <Compile Include="Geographical\Features\IFeatureSource.cs" />
+    <Compile Include="Geographical\Features\Area.cs" />
+    <Compile Include="Geographical\Features\Feature.cs" />
+    <Compile Include="Geographical\Geocoding\IGeocodingSource.cs" />
+    <Compile Include="Geographical\Geocoding\IReverseGeocodingSource.cs" />
+    <Compile Include="Geographical\Tiles\ITileSource.cs" />
+    <Compile Include="Geometry\Bounds2d.cs" />
+    <Compile Include="Geometry\Bounds3d.cs" />
+    <Compile Include="Geometry\Line2d.cs" />
+    <Compile Include="Geometry\LineIntersection.cs" />
+    <Compile Include="Geometry\RelativePosition.cs" />
+    <Compile Include="Geometry\Tessellation\LineStripTessellator2d.cs" />
+    <Compile Include="Geometry\Tessellation\PointTessellator2d.cs" />
+    <Compile Include="Geometry\Topology.cs" />
+    <Compile Include="Http\JsonRestClient.cs" />
+    <Compile Include="IMap.cs" />
+    <Compile Include="ICoordinateControllable.cs" />
+    <Compile Include="ICoordinateQueryable.cs" />
+    <Compile Include="IHeadingControllable.cs" />
+    <Compile Include="IHeadingQueryable.cs" />
+    <Compile Include="IO\FeatureReader.cs" />
+    <Compile Include="IO\FeatureWriter.cs" />
+    <Compile Include="IO\SingleFeatureReader.cs" />
+    <Compile Include="IO\Features\BinaryArea.cs" />
+    <Compile Include="IO\Features\BinaryFeature.cs" />
+    <Compile Include="IO\Places\BinaryPlace.cs" />
+    <Compile Include="IO\Geographical\BinaryCoordinate.cs" />
+    <Compile Include="IO\SingleFeatureWriter.cs" />
+    <Compile Include="IO\Collections\BinaryFeatureCollection.cs" />
+    <Compile Include="IO\Features\BinarySegment.cs" />
+    <Compile Include="IO\IStringSource.cs" />
+    <Compile Include="IO\IStringTarget.cs" />
+    <Compile Include="Lod\IMapLod.cs" />
+    <Compile Include="Lod\IMapLodTree.cs" />
+    <Compile Include="Lod\MapLodBase.cs" />
+    <Compile Include="Lod\MapLodTreeBase.cs" />
+    <Compile Include="Logging\ForwardingTextWriter.cs" />
+    <Compile Include="Matrix2d.cs" />
+    <Compile Include="Matrix3d.cs" />
+    <Compile Include="Matrix4d.cs" />
+    <Compile Include="IPool.cs" />
+    <Compile Include="IPoolable.cs" />
+    <Compile Include="Pool.cs" />
+    <Compile Include="Quaterniond.cs" />
+    <Compile Include="Rendering\IRenderableVisitor.cs" />
+    <Compile Include="Transformd.cs" />
+    <Compile Include="Vector4d.cs" />
+    <Compile Include="Vector4f.cs" />
+    <Compile Include="Colorf.cs" />
+    <Compile Include="Rendering\Renderable.cs" />
+    <Compile Include="Rendering\UIRenderable.cs" />
+    <Compile Include="Rendering\MeshRenderable.cs" />
+    <Compile Include="Routing\IRoutingSource.cs" />
+    <Compile Include="Geographical\Features\Segment.cs" />
+    <Compile Include="Geographical\Tiles\Tile.cs" />
+    <Compile Include="Geographical\Tiles\TmsTileRange.cs" />
+    <Compile Include="Geographical\Tiles\TmsTile.cs" />
+    <Compile Include="Geometry\Box2d.cs" />
+    <Compile Include="Geometry\Ellipsoid.cs" />
+    <Compile Include="Geometry\LineSegment2d.cs" />
+    <Compile Include="Geometry\LineStrip2d.cs" />
+    <Compile Include="Geometry\Mesh.cs" />
+    <Compile Include="Http\DefaultRestClient.cs" />
+    <Compile Include="Http\RestClient.cs" />
+    <Compile Include="Http\RestRequest.cs" />
+    <Compile Include="Http\XmlRestClient.cs" />
+    <Compile Include="IProvider.cs" />
+    <Compile Include="Mathd.cs" />
+    <Compile Include="Mathf.cs" />
+    <Compile Include="Vector2d.cs" />
+    <Compile Include="Vector2f.cs" />
+    <Compile Include="Vector3d.cs" />
+    <Compile Include="Vector3f.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Extensions\CollectionExtensions.cs" />
+    <Compile Include="Extensions\EnumExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="log4net.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="Resources\DefaultIcon.png" />
+    <EmbeddedResource Include="Resources\DefaultArrow\Arrow_0.png" />
+    <EmbeddedResource Include="Resources\DefaultArrow\Arrow_1.png" />
+    <EmbeddedResource Include="Resources\DefaultArrow\Arrow_10.png" />
+    <EmbeddedResource Include="Resources\DefaultArrow\Arrow_11.png" />
+    <EmbeddedResource Include="Resources\DefaultArrow\Arrow_12.png" />
+    <EmbeddedResource Include="Resources\DefaultArrow\Arrow_13.png" />
+    <EmbeddedResource Include="Resources\DefaultArrow\Arrow_14.png" />
+    <EmbeddedResource Include="Resources\DefaultArrow\Arrow_15.png" />
+    <EmbeddedResource Include="Resources\DefaultArrow\Arrow_16.png" />
+    <EmbeddedResource Include="Resources\DefaultArrow\Arrow_17.png" />
+    <EmbeddedResource Include="Resources\DefaultArrow\Arrow_18.png" />
+    <EmbeddedResource Include="Resources\DefaultArrow\Arrow_19.png" />
+    <EmbeddedResource Include="Resources\DefaultArrow\Arrow_2.png" />
+    <EmbeddedResource Include="Resources\DefaultArrow\Arrow_20.png" />
+    <EmbeddedResource Include="Resources\DefaultArrow\Arrow_21.png" />
+    <EmbeddedResource Include="Resources\DefaultArrow\Arrow_22.png" />
+    <EmbeddedResource Include="Resources\DefaultArrow\Arrow_23.png" />
+    <EmbeddedResource Include="Resources\DefaultArrow\Arrow_3.png" />
+    <EmbeddedResource Include="Resources\DefaultArrow\Arrow_4.png" />
+    <EmbeddedResource Include="Resources\DefaultArrow\Arrow_5.png" />
+    <EmbeddedResource Include="Resources\DefaultArrow\Arrow_6.png" />
+    <EmbeddedResource Include="Resources\DefaultArrow\Arrow_7.png" />
+    <EmbeddedResource Include="Resources\DefaultArrow\Arrow_8.png" />
+    <EmbeddedResource Include="Resources\DefaultArrow\Arrow_9.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent Condition="'$(Configuration)|$(Platform)' != 'ObfuscatedRelease|AnyCPU'">python $(SolutionDir)postbuild.py -s $(TargetDir) -n $(TargetName) -t "..\MapsExample\Assets\Plugins\Maps"</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>python $(SolutionDir)postbuild.py -s $(TargetDir) -n $(TargetName) -t "..\MapsExample\Assets\Plugins\Maps"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

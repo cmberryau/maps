@@ -1,0 +1,8 @@
+# unignore meta files
+!*.meta
+
+# ignore compiled items
+*.dll
+*.mdb
+*.pdb
+*.xml

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8FAA041B-942B-417A-B420-061F529AB9DF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Maps.Data.OpenStreetMap</RootNamespace>
+    <AssemblyName>Maps.Data.OpenStreetMap</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>bin\Release\Maps.Data.OpenStreetMap.xml</DocumentationFile>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql, Version=3.2.6.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.3.2.6\lib\net451\Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.4.0\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Collections\IOsmGeoCollection.cs" />
+    <Compile Include="Collections\IOsmGeoIdCollection.cs" />
+    <Compile Include="Collections\IRelationMemberCollection.cs" />
+    <Compile Include="Collections\OsmGeoCollection.cs" />
+    <Compile Include="Collections\OsmGeoIdCollection.cs" />
+    <Compile Include="Collections\RelationMember.cs" />
+    <Compile Include="Collections\RelationMemberCollection.cs" />
+    <Compile Include="Extensions\ListExtensions.cs" />
+    <Compile Include="Translation\AreaCategoryMap.cs" />
+    <Compile Include="Translation\IFeatureTranslator.cs" />
+    <Compile Include="Translation\TagsMap.cs" />
+    <Compile Include="Translation\ITagsMap.cs" />
+    <Compile Include="Translation\PlaceCategoryMap.cs" />
+    <Compile Include="Translation\AreaTranslator.cs" />
+    <Compile Include="Translation\CompoundAreaTranslator.cs" />
+    <Compile Include="Translation\FeatureTranslator.cs" />
+    <Compile Include="Translation\INodeTranslator.cs" />
+    <Compile Include="Translation\IRelationTranslator.cs" />
+    <Compile Include="Translation\IWayTranslator.cs" />
+    <Compile Include="Translation\OsmGeoTranslator.cs" />
+    <Compile Include="Geographical\Features\OpenStreetMapFeatureProvider.cs" />
+    <Compile Include="Geographical\Features\OpenStreetMapFeatureSource.cs" />
+    <Compile Include="IOsmGeoConnection.cs" />
+    <Compile Include="IOsmGeoSource.cs" />
+    <Compile Include="Translation\IOsmGeoTranslator.cs" />
+    <Compile Include="IRootOsmConnection.cs" />
+    <Compile Include="Node.cs" />
+    <Compile Include="OpenStreetMapProvider.cs" />
+    <Compile Include="OsmGeo.cs" />
+    <Compile Include="PostgreSQL\PostgreSQLClient.cs" />
+    <Compile Include="PostgreSQL\PostgreSQLOsmGeoConnection.cs" />
+    <Compile Include="PostgreSQL\PostgreSQLOsmGeoSource.cs" />
+    <Compile Include="PostgreSQL\PostgreSQLRootConnection.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Relation.cs" />
+    <Compile Include="Translation\PlaceTranslator.cs" />
+    <Compile Include="Translation\RoadCategoryMap.cs" />
+    <Compile Include="Translation\SegmentTranslator.cs" />
+    <Compile Include="Way.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Maps.Data\Maps.Data.csproj">
+      <Project>{1c88f452-edb9-499a-9b6e-03ccbb96d3b7}</Project>
+      <Name>Maps.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Maps\Maps.csproj">
+      <Project>{ce31d321-82d9-4ea3-b52d-ef711139aae1}</Project>
+      <Name>Maps</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Place_Petrol33p.png" />
+    <EmbeddedResource Include="Resources\Place_Parking33p.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\CreateRelationsGeomTable.sql" />
+    <Content Include="Scripts\CreateRelationsGeomTableBboxes.py" />
+    <Content Include="Scripts\CreateRelationsTableBboxColumn.sql" />
+    <Content Include="Scripts\pgsnapshot_load_0.6.sql" />
+    <Content Include="Scripts\SetRelationsTableBbox.sql" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

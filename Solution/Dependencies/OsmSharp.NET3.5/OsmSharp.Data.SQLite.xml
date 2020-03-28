@@ -1,0 +1,538 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OsmSharp.Data.SQLite</name>
+    </assembly>
+    <members>
+        <member name="T:OsmSharp.Data.SQLite.Extensions">
+            <summary>
+            Extensions for SQLite
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Extensions.ConvertToDBValue``1(System.Nullable{``0})">
+            <summary>
+            Converts a nullable to a database value.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="nullable"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Extensions.ToStringEmptyWhenNull(System.Object)">
+            <summary>
+            Returns ToString() or string.Empty if the given object is null.
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="T:OsmSharp.Data.SQLite.Osm.SQLiteSchemaTools">
+            <summary>
+            Tools for creation/detection of the simple schema in SQLite.
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.SQLite.Osm.SQLiteSchemaTools.DefaultFilePath">
+            <summary>
+            Default filename for sqlite dbs
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteSchemaTools.DetectTable(Mono.Data.Sqlite.SqliteConnection,System.String)">
+            <summary>
+            Returns true if the table with the given name exists in the db connected to
+            </summary>
+            <param name="connection">The SQLite connection to attempt to detect on</param>
+            <param name="table_name">The SQLite table to detect</param>
+            <returns>true if table exists</returns>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteSchemaTools.DetectIndex(Mono.Data.Sqlite.SqliteConnection,System.String,System.String)">
+            <summary>
+            Returns true if the index with the given name exists in the db connected to
+            </summary>
+            <param name="connection">The SQLite connection to attempt to detect on</param>
+            <param name="table_name">The SQLite table to detect on</param>
+            <param name="index_name">The SQLite index to detect</param>
+            <returns>true if index exists</returns>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteSchemaTools.DropTable(Mono.Data.Sqlite.SqliteConnection,System.String)">
+            <summary>
+            Drops a table from the SQLite db
+            </summary>
+            <param name="connection">The SQLite connection to attempt the drop on</param>
+            <param name="table_name">The SQLite table to drop the index from</param>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteSchemaTools.DropIndex(Mono.Data.Sqlite.SqliteConnection,System.String,System.String)">
+            <summary>
+            Drops an index from the SQLite db
+            </summary>
+            <param name="connection">The SQLite connection to attempt the drop on</param>
+            <param name="table_name">The SQLite table to drop</param>
+            <param name="index_name">The SQLite index to drop</param>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteSchemaTools.ExecuteScript(Mono.Data.Sqlite.SqliteConnection,System.String)">
+            <summary>
+            Executes the given script on the database connected to.
+            </summary>
+            <param name="connection"></param>
+            <param name="sql"></param>     
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteSchemaTools.BuildConnectionString(System.Boolean,System.String,System.String,System.Boolean)">
+            <summary>
+            Builds a connection string given the parameters
+            </summary>
+            <param name="in_memory">Is the DB in-memory?</param>
+            <param name="path">What is the path of the DB (if any) (ignored for in-memory db's)</param>
+            <param name="password">What is the password of the DB (if any)</param>
+            <param name="compressed">Is the DB compressed?</param>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteSchemaTools.GeoToDB(System.Double)">
+            <summary>
+            Converts a lon or lat value to a db storable value
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteSchemaTools.DBToGeo(System.Int32)">
+            <summary>
+            Converts a db storable value to a lon or lat
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteSchemaTools.CreateAndDetect(Mono.Data.Sqlite.SqliteConnection)">
+            <summary>
+            Creates the entire schema but also detects existing tables.
+            </summary>
+            <param name="connection">The SqliteConnection to perform detection and creation on</param>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteSchemaTools.Drop(Mono.Data.Sqlite.SqliteConnection)">
+            <summary>
+            Drops the entire schema.
+            </summary>
+            <param name="connection">The SqliteConnection to drop tables from</param>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteSchemaTools.PostFilter(Mono.Data.Sqlite.SqliteConnection)">
+            <summary>
+            Post filters the entire DB
+            </summary>
+        </member>
+        <member name="T:OsmSharp.Data.SQLite.Osm.Streams.SQLiteOsmStreamSource">
+            <summary>
+            An SQLite data processor source.
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.SQLite.Osm.Streams.SQLiteOsmStreamSource._connection">
+            <summary>
+            Holds the connection.
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.SQLite.Osm.Streams.SQLiteOsmStreamSource._connection_string">
+            <summary>
+            Holds the connection string.
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.SQLite.Osm.Streams.SQLiteOsmStreamSource._create_and_detect_schema">
+            <summary>
+            Flag that indicates if the schema needs to be created if not present.
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.SQLite.Osm.Streams.SQLiteOsmStreamSource._id">
+            <summary>
+            The unique id for this datasource.
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.SQLite.Osm.Streams.SQLiteOsmStreamSource._current_type">
+            <summary>
+            Holds the current type.
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.SQLite.Osm.Streams.SQLiteOsmStreamSource._current">
+            <summary>
+            Holds the current object.
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.Streams.SQLiteOsmStreamSource.#ctor(System.String,System.Boolean)">
+            <summary>
+            Creates a new SQLite data processor source.
+            </summary>
+            <param name="connection_string">The connection string for the SQLite db</param>
+            <param name="create_schema">Do the db schema and tables need to be created?</param>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.Streams.SQLiteOsmStreamSource.#ctor(System.Boolean,System.String,System.String,System.Boolean)">
+            <summary>
+            Creates a new SQLite data processor source.
+            </summary>
+            <param name="in_memory">Is the DB in memory? (default is false)</param>
+            <param name="path">The path to the DB, or its descriptor in memory (if any)</param>
+            <param name="password">The DB password (if any)</param>
+            <param name="create_schema">Do the db tables need to be created?</param>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.Streams.SQLiteOsmStreamSource.#ctor(Mono.Data.Sqlite.SqliteConnection,System.Boolean)">
+            <summary>
+            Creates a new SQLite data processor source.
+            </summary>
+            <param name="connection">The SQLite connection</param>
+            <param name="create_schema">Do the db schema and tables need to be created?</param>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.Streams.SQLiteOsmStreamSource.Initialize">
+            <summary>
+            Initializes this source.
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.Streams.SQLiteOsmStreamSource.MoveNext(System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Move to the next item in the stream.
+            </summary>
+            <param name="ignoreNodes">Makes this source skip all nodes.</param>
+            <param name="ignoreWays">Makes this source skip all ways.</param>
+            <param name="ignoreRelations">Makes this source skip all relations.</param>
+            <returns></returns>
+        </member>
+        <member name="P:OsmSharp.Data.SQLite.Osm.Streams.SQLiteOsmStreamSource.IsSorted">
+            <summary>
+            Returns true if this source is sorted.
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.Streams.SQLiteOsmStreamSource.Current">
+            <summary>
+            Returns the current object.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.Streams.SQLiteOsmStreamSource.Reset">
+            <summary>
+            Resets this source.
+            </summary>
+        </member>
+        <member name="P:OsmSharp.Data.SQLite.Osm.Streams.SQLiteOsmStreamSource.CanReset">
+            <summary>
+            Returns a value that indicates if this source can be reset or not.
+            </summary>
+        </member>
+        <member name="T:OsmSharp.Data.SQLite.Osm.Streams.SQLiteOsmStreamTarget">
+            <summary>
+            Data target for SQLite.
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.SQLite.Osm.Streams.SQLiteOsmStreamTarget.ConnectionOwner">
+            <summary>
+            Does this object own it's own connection?
+            </summary>
+        </member>
+        <member name="P:OsmSharp.Data.SQLite.Osm.Streams.SQLiteOsmStreamTarget.SupportsConcurrentCopies">
+            <summary>
+            Indicates if the SQLite target supports concurrent copies
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.Streams.SQLiteOsmStreamTarget.#ctor(Mono.Data.Sqlite.SqliteConnection,System.Boolean,OsmSharp.Osm.Filters.Filter,OsmSharp.Osm.Filters.TagFilter)">
+            <summary>
+            Creates a new SQLite target
+            </summary>
+            <param name="connection">The SQLite connection to use</param>
+            <param name="create_schema">Do the db tables need to be created?</param>
+            <param name="geo_filter">The geos filter to be used</param>
+            <param name="tag_filter">The tags filter to be used</param>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.Streams.SQLiteOsmStreamTarget.#ctor(System.Boolean,System.String,System.String,System.Boolean,OsmSharp.Osm.Filters.Filter,OsmSharp.Osm.Filters.TagFilter)">
+            <summary>
+            Creates a new SQLite target
+            </summary>
+            <param name="in_memory">Is the DB in memory? (default is false)</param>
+            <param name="path">The path to the DB, or its descriptor in memory (if any)</param>
+            <param name="password">The DB password (if any)</param>
+            <param name="create_schema">Do the db tables need to be created?</param>
+            <param name="geo_filter">The geos filter to be used</param>
+            <param name="tag_filter">The tags filter to be used</param>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.Streams.SQLiteOsmStreamTarget.#ctor(System.String,System.Boolean,OsmSharp.Osm.Filters.Filter,OsmSharp.Osm.Filters.TagFilter)">
+            <summary>
+            Creates a new SQLite target
+            </summary>
+            <param name="connection_string">The SQLite connection string to use</param>
+            <param name="create_schema">Should we detect if the db tables exist and attempt to create them?</param>
+            <param name="geo_filter">The geos filter to be used</param>
+            <param name="tag_filter">The tags filter to be used</param>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.Streams.SQLiteOsmStreamTarget.Initialize">
+            <summary>
+            Initializes this target.
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.Streams.SQLiteOsmStreamTarget.AddNode(OsmSharp.Osm.Node)">
+            <summary>
+            Adds a node.
+            </summary>
+            <param name="node">The node to add</param>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.Streams.SQLiteOsmStreamTarget.AddWay(OsmSharp.Osm.Way)">
+            <summary>
+            Adds a way.
+            </summary>
+            <param name="way">The way to add to the db</param>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.Streams.SQLiteOsmStreamTarget.AddRelation(OsmSharp.Osm.Relation)">
+            <summary>
+            Adds a relation.
+            </summary>
+            <param name="relation">The relation to add to the SQLite DB</param>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.Streams.SQLiteOsmStreamTarget.Close">
+            <summary>
+            Closes this target.
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.Streams.SQLiteOsmStreamTarget.OnAfterPull">
+            <summary>
+            Called right after pull and right before flush.
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.Streams.SQLiteOsmStreamTarget.Flush">
+            <summary>
+            Flushes all data.
+            </summary>
+        </member>
+        <member name="T:OsmSharp.Data.SQLite.Osm.SQLiteDataSource">
+            <summary>
+            An SQLite data source.
+            </summary>
+        </member>
+        <member name="P:OsmSharp.Data.SQLite.Osm.SQLiteDataSource.BoundingBox">
+            <summary>
+            Not supported.
+            </summary>
+        </member>
+        <member name="P:OsmSharp.Data.SQLite.Osm.SQLiteDataSource.Name">
+            <summary>
+            Returns the name.
+            </summary>
+        </member>
+        <member name="P:OsmSharp.Data.SQLite.Osm.SQLiteDataSource.Id">
+            <summary>
+            Returns the id.
+            </summary>
+        </member>
+        <member name="P:OsmSharp.Data.SQLite.Osm.SQLiteDataSource.HasBoundingBox">
+            <summary>
+            Returns false; database sources have no bounding box.
+            </summary>
+        </member>
+        <member name="P:OsmSharp.Data.SQLite.Osm.SQLiteDataSource.IsReadOnly">
+            <summary>
+            Return true; source is readonly.
+            </summary>
+        </member>
+        <member name="P:OsmSharp.Data.SQLite.Osm.SQLiteDataSource.DefaultZoomLevel">
+            <summary>
+            The default zoom level that this data source reads at
+            </summary>
+        </member>
+        <member name="P:OsmSharp.Data.SQLite.Osm.SQLiteDataSource.SupportsConcurrentCopies">
+            <summary>
+            Returns true if this datasource supports concurrent copies.
+            </summary>
+        </member>
+        <member name="P:OsmSharp.Data.SQLite.Osm.SQLiteDataSource.OwnsConnection">
+            <summary>
+            Does this object own it's own connection?
+            </summary>
+        </member>
+        <member name="P:OsmSharp.Data.SQLite.Osm.SQLiteDataSource.SqliteVersion">
+            <summary>
+            The version of Sqlite that is loaded into the process
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteDataSource.#ctor(System.String,System.Boolean)">
+            <summary>
+            Creates a new SQLite data source
+            </summary>
+            <param name="connection_string">The connection string for the SQLite db</param>
+            <param name="create_schema">Do the db schema and tables need to be created?</param>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteDataSource.#ctor(System.Boolean,System.String,System.String,System.Boolean)">
+            <summary>
+            Creates a new SQLite source
+            </summary>
+            <param name="in_memory">Is the DB in memory? (default is false)</param>
+            <param name="path">The path to the DB, or its descriptor in memory (if any)</param>
+            <param name="password">The DB password (if any)</param>
+            <param name="create_schema">Do the db tables need to be created?</param>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteDataSource.#ctor(Mono.Data.Sqlite.SqliteConnection,System.Boolean)">
+            <summary>
+            Creates a new SQLite data source
+            </summary>
+            <param name="connection">The SQLite connection</param>
+            <param name="create_schema">Do the db schema and tables need to be created?</param>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteDataSource.ConcurrentCopy">
+            <summary>
+            Provides a copy of the object that is safe to be read at the same time
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteDataSource.GetNodes(System.Collections.Generic.IList{System.Int64})">
+            <summary>
+            Returns all the nodes matching the passed ids
+            </summary>
+            <param name="ids">The list of ids to search the db for</param>
+            <returns>Nodes which match the ids given</returns>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteDataSource.GetNodes(OsmSharp.Osm.Tiles.TileRange)">
+            <summary>
+            Returns all the nodes for the given tile range
+            </summary>
+            <param name="range">The tile range to match nodes against</param>
+            <returns>The list of matching nodes from the db</returns>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteDataSource.GetNodes(OsmSharp.Math.Geo.GeoCoordinateBox)">
+            <summary>
+            Returns all the nodes within the given coordinate box
+            </summary>
+            <param name="box">The coordinate box to match against</param>
+            <returns>The list of matching nodes from the db</returns>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteDataSource.GetNodesForTiles(System.Collections.Generic.IList{System.Int64})">
+            <summary>
+            Returns all the nodes for the given tiles
+            </summary>
+            <param name="tile_ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteDataSource.GetNodesForTiles(System.Collections.Generic.IList{OsmSharp.Osm.Tiles.Tile})">
+            <summary>
+            Returns all the nodes for the given tiles
+            </summary>
+            <param name="tiles"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteDataSource.GetNodesForWayIds(System.Collections.Generic.IList{System.Int64})">
+            <summary>
+            Returns the node ids for the given ways
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteDataSource.GetWays(System.Collections.Generic.IList{System.Int64})">
+            <summary>
+            Returns all ways but use the existing nodes to fill the Nodes-lists.
+            </summary>
+            <param name="way_ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteDataSource.GetWays(System.Collections.Generic.IList{OsmSharp.Osm.Node})">
+            <summary>
+            Returns all ways but use the existing nodes to fill the Nodes-lists.
+            </summary>
+            <param name="nodes">List of nodes to find ways for</param>
+            <returns>List of ways that contain the passed nodes</returns>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteDataSource.GetWaysFor(System.Int64)">
+            <summary>
+            Returns all ways using the given node.
+            </summary>
+            <param name="node_id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteDataSource.GetWaysFor(System.Collections.Generic.List{System.Int64})">
+            <summary>
+            Returns all ways using any of the given nodes.
+            </summary>
+            <param name="node_ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteDataSource.GetRelations(System.Collections.Generic.IList{System.Int64})">
+            <summary>
+            Returns the relations for the given ids.
+            </summary>
+            <param name="relation_ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteDataSource.GetRelationsFor(System.Collections.Generic.IList{OsmSharp.Osm.OsmGeo})">
+            <summary>
+            Returns the relations that contain any of the geos
+            </summary>
+            <param name="geos">The geometries to be searched against</param>
+            <returns>A list of relations that contain any of the geos passed</returns>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteDataSource.GetRelationsFor(OsmSharp.Osm.OsmGeoType,System.Int64)">
+            <summary>
+            Returns all relations for the given objects.
+            </summary>
+            <param name="type"></param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteDataSource.Get(OsmSharp.Math.Geo.GeoCoordinateBox,OsmSharp.Osm.Filters.Filter)">
+            <summary>
+            Returns all data within the given bounding box and filtered by the given filter.
+            </summary>
+            <param name="box">The bounding box to search within</param>
+            <param name="filter">Filtering options for the results</param>
+            <returns>Matching OsmGeos</returns>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteDataSource.Get(System.Collections.Generic.IList{OsmSharp.Osm.Tiles.Tile},OsmSharp.Osm.Filters.Filter)">
+            <summary>
+            Gets all geometries in the given list of tiles
+            </summary>
+            <param name="tiles">List of tiles to fetch geometries from</param>
+            <param name="filter">Filtering options for the results</param>
+            <returns>Matching OsmGeos</returns>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteDataSource.Get(OsmSharp.Osm.Tiles.Tile,OsmSharp.Osm.Filters.Filter)">
+            <summary>
+            Gets all geometries in the tile
+            </summary>
+            <param name="tile">The tile to fetch geometries from</param>
+            <param name="filter">Filtering options for the results</param>
+            <returns>Matching OsmGeos</returns>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteDataSource.GetCollection(OsmSharp.Osm.Tiles.Tile,OsmSharp.Osm.Filters.Filter)">
+            <summary>
+            Returns all data within the given tile
+            </summary>
+            <param name="tile">The tile to fetch geometries from</param>
+            <param name="filter">Filtering options for the results</param>
+            <returns>An OsmGeoCollection object containing the data within the given tile</returns>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteDataSource.GetCollection(System.Collections.Generic.IList{OsmSharp.Osm.Tiles.Tile},OsmSharp.Osm.Filters.Filter)">
+            <summary>
+            Returns all data within the given tiles
+            </summary>
+            <param name="tiles">The tiles to fetch geometries from</param>
+            <param name="filter">Filtering options for the results</param>
+            <returns>An OsmGeoCollection object containing the data within the given tile</returns>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteDataSource.GetCollection(OsmSharp.Math.Geo.GeoCoordinateBox,OsmSharp.Osm.Filters.Filter)">
+            <summary>
+            Returns all the objects in this dataset that evaluate the filter to true.
+            </summary>
+            <param name="box"></param>
+            <param name="filter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteDataSource.UniqueTags(OsmSharp.Osm.OsmGeoType,System.Collections.Generic.List{System.String})">
+            <summary>
+            Returns the unique tags for the given geo type
+            </summary>
+            <param name="type">The geo type</param>
+            <param name="keys">The key filter, only return tag combinations with these keys</param>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteDataSource.UniqueTags(OsmSharp.Osm.OsmGeoType,System.String)">
+            <summary>
+            Returns the unique tags for the given geo type
+            </summary>
+            <param name="type">The geo type</param>
+            <param name="key">The key filter, only return tag combinations with this key</param>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteDataSource.GetGeosGivenTag(OsmSharp.Osm.OsmGeoType,System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            Returns all ways matching the tag passed
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteDataSource.GetGeosGivenTags(OsmSharp.Osm.OsmGeoType,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}})">
+            <summary>
+            Returns all ways matching the tags passed
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteDataSource.Close">
+            <summary>
+            Closes this sqlite data source
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.SQLite.Osm.SQLiteDataSource.Dispose">
+            <summary>
+            Diposes the resources used in this sqlite data source
+            </summary>
+        </member>
+    </members>
+</doc>

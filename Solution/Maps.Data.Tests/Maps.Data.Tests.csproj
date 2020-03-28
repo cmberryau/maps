@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8C1CB9F2-FC61-4CCD-953A-B816C787AF8C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Maps.Data.Tests</RootNamespace>
+    <AssemblyName>Maps.Data.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NET35</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Maps.Data.Tests.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;NET35</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Maps.Data.Tests.xml</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ObfuscatedRelease|AnyCPU'">
+    <OutputPath>bin\ObfuscatedRelease\</OutputPath>
+    <DefineConstants>TRACE;NET35</DefineConstants>
+    <DocumentationFile>bin\Release\Maps.Data.Tests.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Data.Sqlite">
+      <HintPath>..\Dependencies\sqlite\Mono.Data.Sqlite.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql, Version=3.2.6.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.3.2.6\lib\net451\Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=3.9.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.9.0\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.4.0\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Geographical\Features\MapsFeatureSourceTests.cs" />
+    <Compile Include="Geographical\Features\MapsFeatureTargetTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sqlite\MapsFeatureSourceSqliteTests.cs" />
+    <Compile Include="Sqlite\MapsFeatureTargetSqliteTests.cs" />
+    <Compile Include="Sqlite\SqliteDbConnectionTests.cs" />
+    <Compile Include="Sqlite\SqliteDbReaderTests.cs" />
+    <Compile Include="Sqlite\SqliteDbTypeParserTests.cs" />
+    <Compile Include="Sqlite\SqliteDbWriterTests.cs" />
+    <Compile Include="Sqlite\SqliteTestUtilities.cs" />
+    <Compile Include="Compilation\TiledFeatureTaskTests.cs" />
+    <Compile Include="TileIndexedReaderTests.cs" />
+    <Compile Include="TileIndexedWriterTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="ReferenceFiles\Data\Features.sqlite3" />
+    <None Include="ReferenceFiles\Data\Images.sqlite3" />
+    <None Include="ReferenceFiles\Data\Strings.sqlite3" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Maps.Data.OpenStreetMap.Tests\Maps.Data.OpenStreetMap.Tests.csproj">
+      <Project>{00f3b8df-7536-45cf-8a82-580adf711d77}</Project>
+      <Name>Maps.Data.OpenStreetMap.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Maps.Data.OpenStreetMap\Maps.Data.OpenStreetMap.csproj">
+      <Project>{8faa041b-942b-417a-b420-061f529ab9df}</Project>
+      <Name>Maps.Data.OpenStreetMap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Maps.Data\Maps.Data.csproj">
+      <Project>{1C88F452-EDB9-499A-9B6E-03CCBB96D3B7}</Project>
+      <Name>Maps.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Maps.Tests\Maps.Tests.csproj">
+      <Project>{1240AF73-59FF-4CB8-AAEA-9647E10010AD}</Project>
+      <Name>Maps.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Maps\Maps.csproj">
+      <Project>{CE31D321-82D9-4EA3-B52D-EF711139AAE1}</Project>
+      <Name>Maps</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\Dependencies\sqlite\Windows\x64\sqlite3.dll">
+      <Link>sqlite3.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="TestImage0.png" />
+    <EmbeddedResource Include="TestImage.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

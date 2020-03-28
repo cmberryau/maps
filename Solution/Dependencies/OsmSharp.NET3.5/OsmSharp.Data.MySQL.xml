@@ -1,0 +1,1231 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OsmSharp.Data.MySQL</name>
+    </assembly>
+    <members>
+        <member name="T:OsmSharp.Data.MySQL.Extensions">
+            <summary>
+            Extensions.
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Extensions.ConvertToDBValue``1(System.Nullable{``0})">
+            <summary>
+            Converts a nullable to a database value.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="nullable"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Extensions.ToStringEmptyWhenNull(System.Object)">
+            <summary>
+            Returns ToString() or string.Empty if the given object is null.
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="T:OsmSharp.Data.MySQL.Osm.MySQLDataSource">
+            <summary>
+            A MySQL data source
+            </summary>
+        </member>
+        <member name="P:OsmSharp.Data.MySQL.Osm.MySQLDataSource.OwnsConnection">
+            <summary>
+            Does this object own it's own connection?
+            </summary>
+        </member>
+        <member name="P:OsmSharp.Data.MySQL.Osm.MySQLDataSource.SupportsConcurrentCopies">
+            <summary>
+            Returns true if this datasource supports concurrent copies.
+            </summary>
+        </member>
+        <member name="P:OsmSharp.Data.MySQL.Osm.MySQLDataSource.DefaultZoomLevel">
+            <summary>
+            The default zoom level that this data source reads at
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.MySQLDataSource._connection_string">
+            <summary>
+            Holds the connection string.
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.MySQLDataSource._connection_owner">
+            <summary>
+            Was the connection created by this object?
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.MySQLDataSource._id">
+            <summary>
+            The id of this datasource.
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.MySQLDataSource._create_and_detect_schema">
+            <summary>
+            Flag that indicates if the schema needs to be created if not present.
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.MySQLDataSource._connection">
+            <summary>
+            Holds the connection to the MySQL db.
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.MySQLDataSource.SELECT_NODES_STUB">
+            <summary>
+            MySQL command string stub to select nodes
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.MySQLDataSource.SELECT_NODES">
+            <summary>
+            MySQL command string to select nodes from ids
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.MySQLDataSource.SELECT_NODES_FROM_TILES">
+            <summary>
+            MySQL command string to select nodes based on tiles
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.MySQLDataSource.SELECT_NODES_FROM_TILES_AND_GEO_COORDS">
+            <summary>
+            MySQL command string to select nodes based on tiles and geocoords
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.MySQLDataSource.SELECT_NODE_TAGS">
+            <summary>
+            MySQL command string to select node tags
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.MySQLDataSource.SELECT_NODES_IDS_TAGS">
+            <summary>
+            MySQL command string to select node tags and node id from a list of nodes
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.MySQLDataSource.SELECT_WAYS">
+            <summary>
+            MySQL command string to select ways
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.MySQLDataSource.SELECT_WAY_TAGS">
+            <summary>
+            MySQL command string to select way tags from a list of way ids
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.MySQLDataSource.SELECT_WAYS_IDS_TAGS">
+            <summary>
+            MySQL command string to select way tags and way id from a list of way ids
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.MySQLDataSource.SELECT_WAY_NODES">
+            <summary>
+            MySQL command string to select way nodes from a list of way ids
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.MySQLDataSource.SELECT_WAYS_IDS_NODES">
+            <summary>
+            MySQL command string to select way nodes and way ids from a list of way ids
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.MySQLDataSource.SELECT_WAYS_FROM_NODES">
+            <summary>
+            MySQL command string to select ways from nodes
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.MySQLDataSource.SELECT_RELATIONS">
+            <summary>
+            MySQL command string to select relations
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.MySQLDataSource.SELECT_RELATION_TAGS">
+            <summary>
+            MySQL command string to select relation tags
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.MySQLDataSource.SELECT_RELATIONS_IDS_TAGS">
+            <summary>
+            MySQL command string to select relation ids and tags
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.MySQLDataSource.SELECT_RELATION_MEMBERS">
+            <summary>
+            MySQL command string to select way nodes
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.MySQLDataSource.SELECT_RELATIONS_IDS_MEMBERS">
+            <summary>
+            MySQL command string to select way nodes
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.MySQLDataSource.SELECT_RELATIONS_FOR_MEMBER">
+            <summary>
+            MySQL command string to select relations for a member of a certain type
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.#ctor(System.String,System.Boolean)">
+            <summary>
+            Creates a new MySQL data source
+            </summary>
+            <param name="connection_string">The connection string for the MySQL db</param>
+            <param name="create_schema">Does the db schema need to be created?</param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.#ctor(MySql.Data.MySqlClient.MySqlConnection,System.String,System.Boolean)">
+            <summary>
+            Creates a new MySQL data source
+            </summary>
+            <param name="connection">The MySQL connection</param>
+            <param name="password">The password used to connect to the MySQL data base</param>
+            <param name="create_schema">Should we detect if the db tables exist and attempt to create them?</param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.#ctor(System.String,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Creates a new MySQL data source
+            </summary>
+            <param name="hostname">The hostname of the MySQL server</param>
+            <param name="database">The MySQL schema name</param>
+            <param name="username">The username to connect with, sent over plain text</param>
+            <param name="password">The password to connect with, sent over plain text</param>
+            <param name="create_schema">Does the db schema need to be created?</param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.EnsureConnection">
+            <summary>
+            Creates a new/gets the existing connection.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:OsmSharp.Data.MySQL.Osm.MySQLDataSource.BoundingBox">
+            <summary>
+            Not supported.
+            </summary>
+        </member>
+        <member name="P:OsmSharp.Data.MySQL.Osm.MySQLDataSource.Name">
+            <summary>
+            Returns the name.
+            </summary>
+        </member>
+        <member name="P:OsmSharp.Data.MySQL.Osm.MySQLDataSource.Id">
+            <summary>
+            Returns the id.
+            </summary>
+        </member>
+        <member name="P:OsmSharp.Data.MySQL.Osm.MySQLDataSource.HasBoundingBox">
+            <summary>
+            Returns false; database sources have no bounding box.
+            </summary>
+        </member>
+        <member name="P:OsmSharp.Data.MySQL.Osm.MySQLDataSource.IsReadOnly">
+            <summary>
+            Return true; source is readonly.
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.ConvertMemberType(System.Int64)">
+            <summary>
+            Converts the member type id to the relation membertype enum.
+            </summary>
+            <param name="member_type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.ConvertMemberType(System.Int16)">
+            <summary>
+            Converts the member type id to the relation membertype enum.
+            </summary>
+            <param name="member_type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.ConvertMemberType(System.Nullable{OsmSharp.Osm.OsmGeoType})">
+            <summary>
+            Converts the member type to long.
+            </summary>
+            <param name="memberType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.ConvertMemberTypeShort(System.Nullable{OsmSharp.Osm.OsmGeoType})">
+            <summary>
+            Converts the member type to short.
+            </summary>
+            <param name="memberType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.ConvertDateTime(System.Int64)">
+            <summary>
+            Converts a given unix time to a DateTime object.
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.ConstructIdList(System.Collections.Generic.IList{System.Int64})">
+            <summary>
+            Constructs an id list for SQL.
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.ConstructIdList(System.Collections.Generic.IList{System.Int64},System.Int32,System.Int32)">
+            <summary>
+            Constructs an id list for SQL for only the specified section of ids.
+            </summary>
+            <param name="ids"></param>
+            <param name="start_idx"></param>
+            <param name="end_idx"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.ConstructIdList(System.Collections.Generic.IEnumerable{System.Int64})">
+            <summary>
+            Constructs an id list for SQL for only the specified section of ids.
+            </summary>
+            <param name="ids"></param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.ConstructIdList(OsmSharp.Osm.Tiles.TileRange)">
+            <summary>
+            Constructs a tile id list for SQL for the TileRange
+            </summary>
+            <param name="tile_range"></param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.GetNodesGivenSQL(System.Collections.Generic.IList{System.Int64},System.String,System.Object[])">
+            <summary>
+            Returns all the nodes matching the passed ids
+            </summary>
+            <param name="ids">The list of ids to search the db for</param>
+            <param name="sql_command">The SQL command to execute</param>
+            <param name="args">Additional arguments to put into the SQL command</param>
+            <returns>Nodes which match the ids given</returns>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.GetNodes(System.Collections.Generic.IList{System.Int64})">
+            <summary>
+            Returns all the nodes matching the passed ids
+            </summary>
+            <param name="ids">The list of ids to search the db for</param>
+            <returns>Nodes which match the ids given</returns>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.GetNodes(OsmSharp.Osm.Tiles.TileRange)">
+            <summary>
+            Returns all the nodes for the given tile range
+            </summary>
+            <param name="range">The tile range to match nodes against</param>
+            <returns>The list of matching nodes from the db</returns>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.GetNodes(OsmSharp.Math.Geo.GeoCoordinateBox)">
+            <summary>
+            Returns all the nodes within the given coordinate box
+            </summary>
+            <param name="box">The coordinate box to match against</param>
+            <returns>The list of matching nodes from the db</returns>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.GetNodesForTiles(System.Collections.Generic.IList{System.Int64})">
+            <summary>
+            Returns all the nodes for the given tiles
+            </summary>
+            <param name="tile_ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.GetNodesForTiles(System.Collections.Generic.IList{OsmSharp.Osm.Tiles.Tile})">
+            <summary>
+            Returns all the nodes for the given tiles
+            </summary>
+            <param name="tiles"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.ReadNode(MySql.Data.MySqlClient.MySqlDataReader)">
+            <summary>
+            Reads a node from the MySqlDataReader
+            </summary>
+            <param name="reader">The MySqlDataReader to attempt reading the node from</param>
+            <returns>The node read from the MySqlReader</returns>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.GetNodeTags(MySql.Data.MySqlClient.MySqlConnection,OsmSharp.Osm.Node)">
+            <summary>
+            Gets the tags for a node from a MySQL connection
+            </summary>
+            <param name="connection">The MySql connection to attempt reading the node tags from</param>
+            <param name="node">The node to add the tags to</param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.GetNodesTags(MySql.Data.MySqlClient.MySqlConnection,System.Collections.Generic.Dictionary{System.Int64,OsmSharp.Osm.Node})">
+            <summary>
+            Gets the tags for a list of nodes from a MySQL connection
+            </summary>
+            <param name="connection">The MySql connection to attempt reading the node tags from</param>
+            <param name="id_nodes">The dictionary of ids and nodes to get the tags for</param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.ReadTag(MySql.Data.MySqlClient.MySqlDataReader)">
+            <summary>
+            Reads a tag from the MySqlDataReader
+            </summary>
+            <param name="reader">The MySqlDataReader to attempt reading the tag from</param>
+            <returns>The tag read from the MySqlReader</returns>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.ReadIdAndTag(MySql.Data.MySqlClient.MySqlDataReader)">
+            <summary>
+            Reads a tag and tag's owner id from the MySqlDataReader
+            </summary>
+            <param name="reader">The MySqlDataReader to attempt reading the tag from</param>
+            <returns>Tuple containing the tag owners id and the tag from the MySqlReader</returns>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.GetWays(System.Collections.Generic.IList{System.Int64})">
+            <summary>
+            Returns all ways but use the existing nodes to fill the Nodes-lists.
+            </summary>
+            <param name="way_ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.GetWays(System.Collections.Generic.IList{OsmSharp.Osm.Node})">
+            <summary>
+            Returns all ways but use the existing nodes to fill the Nodes-lists.
+            </summary>
+            <param name="nodes">List of nodes to find ways for</param>
+            <returns>List of ways that contain the passed nodes</returns>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.ReadWay(MySql.Data.MySqlClient.MySqlDataReader)">
+            <summary>
+            Reads a way from the MySqlDataReader
+            </summary>
+            <param name="reader">The MySqlDataReader to attempt reading the way from</param>
+            <returns>The way read from the MySqlReader</returns>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.GetWayTags(MySql.Data.MySqlClient.MySqlConnection,OsmSharp.Osm.Way)">
+            <summary>
+            Gets the tags for a way from a MySQL connection
+            </summary>
+            <param name="connection">The MySql connection to attempt reading the way tags from</param>
+            <param name="way">The way to add the tags to</param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.GetWaysTags(MySql.Data.MySqlClient.MySqlConnection,System.String,System.Collections.Generic.Dictionary{System.Int64,OsmSharp.Osm.Way})">
+            <summary>
+            Gets the tags for a list of ways from a MySQL connection
+            </summary>
+            <param name="connection">The MySql connection to attempt reading the way tags from</param>
+            <param name="way_ids">The prepared id string for reading the way ids and tags from</param>
+            <param name="id_ways">The id way dictionary to place the tags into</param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.GetWayNodes(MySql.Data.MySqlClient.MySqlConnection,OsmSharp.Osm.Way)">
+            <summary>
+            Gets the nodeids for a way from a MySQL connection
+            </summary>
+            <param name="connection">The MySql connection to attempt reading the ways nodeids from</param>
+            <param name="way">The way to add the nodeids to</param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.GetWaysNodes(MySql.Data.MySqlClient.MySqlConnection,System.String,System.Collections.Generic.Dictionary{System.Int64,OsmSharp.Osm.Way})">
+            <summary>
+            Gets the node ids for a list of ways from a MySQL connection
+            </summary>
+            <param name="connection">The MySql connection to attempt reading the way node ids from</param>
+            <param name="way_ids">The prepared id string to get the way and node ids from</param>
+            <param name="id_ways">The id way dictionary to place the node ids into</param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.ReadNodeId(MySql.Data.MySqlClient.MySqlDataReader)">
+            <summary>
+            Reads a node id from the MySqlDataReader
+            </summary>
+            <param name="reader">The MySqlDataReader to attempt reading the node id from</param>
+            <returns>The node id read from the MySqlReader</returns>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.ReadWayIdAndNodeId(MySql.Data.MySqlClient.MySqlDataReader)">
+            <summary>
+            Reads a way and node id pair from the MySqlDataReader
+            </summary>
+            <param name="reader">The MySqlDataReader to attempt reading the node id from</param>
+            <returns>The node id read from the MySqlReader</returns>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.GetWaysFor(System.Int64)">
+            <summary>
+            Returns all ways using the given node.
+            </summary>
+            <param name="node_id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.GetWaysFor(System.Collections.Generic.List{System.Int64})">
+            <summary>
+            Returns all ways using any of the given nodes.
+            </summary>
+            <param name="node_ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.GetRelations(System.Collections.Generic.IList{System.Int64})">
+            <summary>
+            Returns the relations for the given ids.
+            </summary>
+            <param name="relation_ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.GetRelationsFor(System.Collections.Generic.IList{OsmSharp.Osm.OsmGeo})">
+            <summary>
+            Returns the relations that contain any of the geos
+            </summary>
+            <param name="geos">The geometries to be searched against</param>
+            <returns>A list of relations that contain any of the geos passed</returns>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.GetRelationsForBatch(System.Collections.Generic.IList{OsmSharp.Osm.OsmGeo})">
+            <summary>
+            
+            </summary>
+            <param name="geos"></param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.GetRelationsFor(System.String,OsmSharp.Osm.OsmGeoType)">
+            <summary>
+            
+            </summary>
+            <param name="ids_string"></param>
+            <param name="member_type"></param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.ReadRelation(MySql.Data.MySqlClient.MySqlDataReader)">
+            <summary>
+            Reads a relation from the MySqlDataReader
+            </summary>
+            <param name="reader">The MySqlDataReader to attempt reading the relation from</param>
+            <returns>The relation read from the MySqlReader</returns>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.GetRelationTags(MySql.Data.MySqlClient.MySqlConnection,OsmSharp.Osm.Relation)">
+            <summary>
+            Gets the tags for a relation from a MySQL connection
+            </summary>
+            <param name="connection">The MySql connection to attempt reading the relation tags from</param>
+            <param name="relation">The relation to add the tags to</param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.GetRelationsTags(MySql.Data.MySqlClient.MySqlConnection,System.String,System.Collections.Generic.Dictionary{System.Int64,OsmSharp.Osm.Relation})">
+            <summary>
+            Gets tags for relations based on a pre-processed relation list string
+            </summary>
+            <param name="connection">The MySql connection to attempt reading the relation ids and tags from</param>
+            <param name="id_relations">The prepared id string to fetch the relation ids and tags from</param>
+            <param name="relation_ids">The relation id relation dictionary to add the tags to</param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.GetRelationMembers(MySql.Data.MySqlClient.MySqlConnection,OsmSharp.Osm.Relation)">
+            <summary>
+            Gets the members for a relation from a MySQL connection
+            </summary>
+            <param name="connection">The MySql connection to attempt reading the relation members from</param>
+            <param name="relation">The relation to add the members to</param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.GetRelationsMembers(MySql.Data.MySqlClient.MySqlConnection,System.String,System.Collections.Generic.Dictionary{System.Int64,OsmSharp.Osm.Relation})">
+            <summary>
+            Gets members for relations based on a pre-processed relation list string
+            </summary>
+            <param name="connection">The MySql connection to attempt reading the relation ids and members from</param>
+            <param name="id_relations">The prepared id string to fetch the relation ids and members from</param>
+            <param name="relation_ids">The relation id relation dictionary to add the members to</param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.ReadRelationMember(MySql.Data.MySqlClient.MySqlDataReader)">
+            <summary>
+            Reads a relation member from the MySqlDataReader
+            </summary>
+            <param name="reader">The MySqlDataReader to attempt reading the relation member from</param>
+            <returns>The relation member read from the MySqlReader</returns>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.ReadRelationIdAndMember(MySql.Data.MySqlClient.MySqlDataReader)">
+            <summary>
+            Reads a relation id and relation member from the MySqlDataReader
+            </summary>
+            <param name="reader">The MySqlDataReader to attempt reading the relation id and member from</param>
+            <returns>The relation member and relation id read from the MySqlReader</returns>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.GetRelationsFor(OsmSharp.Osm.OsmGeoType,System.Int64)">
+            <summary>
+            Returns all relations for the given objects.
+            </summary>
+            <param name="type"></param>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.Get(OsmSharp.Math.Geo.GeoCoordinateBox,OsmSharp.Osm.Filters.Filter)">
+            <summary>
+            Returns all data within the given bounding box and filtered by the given filter.
+            </summary>
+            <param name="box">The bounding box to search within</param>
+            <param name="filter">Filtering options for the results</param>
+            <returns>Matching OsmGeos</returns>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.Get(System.Collections.Generic.IList{OsmSharp.Osm.Tiles.Tile},OsmSharp.Osm.Filters.Filter)">
+            <summary>
+            Gets all geometries in the given list of tiles
+            </summary>
+            <param name="tiles">List of tiles to fetch geometries from</param>
+            <param name="filter">Filtering options for the results</param>
+            <returns>Matching OsmGeos</returns>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.Get(OsmSharp.Osm.Tiles.Tile,OsmSharp.Osm.Filters.Filter)">
+            <summary>
+            Gets all geometries in the tile
+            </summary>
+            <param name="tile">The tile to fetch geometries from</param>
+            <param name="filter">Filtering options for the results</param>
+            <returns>Matching OsmGeos</returns>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.GetCollection(OsmSharp.Osm.Tiles.Tile,OsmSharp.Osm.Filters.Filter)">
+            <summary>
+            Returns all data within the given tile
+            </summary>
+            <param name="tile">The tile to fetch geometries from</param>
+            <param name="filter">Filtering options for the results</param>
+            <returns>An OsmGeoCollection object containing the data within the given tile</returns>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.GetCollection(System.Collections.Generic.IList{OsmSharp.Osm.Tiles.Tile},OsmSharp.Osm.Filters.Filter)">
+            <summary>
+            Returns all data within the given tiles
+            </summary>
+            <param name="tiles">The tiles to fetch geometries from</param>
+            <param name="filter">Filtering options for the results</param>
+            <returns>An OsmGeoCollection object containing the data within the given tile</returns>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.ConcurrentCopy">
+            <summary>
+            Provides a copy of the object that is safe to
+            read from at the same time as the source
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.Close">
+            <summary>
+            Closes this datasource.
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLDataSource.Dispose">
+            <summary>
+            Diposes the resources used in this datasource.
+            </summary>
+        </member>
+        <member name="T:OsmSharp.Data.MySQL.Osm.MySQLSchemaTools">
+            <summary>
+            Tools for creation/detection of the simple schema in MySQL.
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLSchemaTools.DetectTable(MySql.Data.MySqlClient.MySqlConnection,System.String)">
+            <summary>
+            Returns true if the table with the given name exists in the db connected to
+            </summary>
+            <param name="connection">The MySQL connection to attempt to detect on</param>
+            <param name="table_name">The MySQL table to detect</param>
+            <returns>true if table exists</returns>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLSchemaTools.DetectIndex(MySql.Data.MySqlClient.MySqlConnection,System.String,System.String)">
+            <summary>
+            Returns true if the index with the given name exists in the db connected to
+            </summary>
+            <param name="connection">The MySQL connection to attempt to detect on</param>
+            <param name="table_name">The MySQL table to detect on</param>
+            <param name="index_name">The MySQL index to detect</param>
+            <returns>true if index exists</returns>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLSchemaTools.DropTable(MySql.Data.MySqlClient.MySqlConnection,System.String)">
+            <summary>
+            Drops a table from the MySQL db
+            </summary>
+            <param name="connection">The MySQL connection to attempt the drop on</param>
+            <param name="table_name">The MySQL table to drop the index from</param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLSchemaTools.DropIndex(MySql.Data.MySqlClient.MySqlConnection,System.String,System.String)">
+            <summary>
+            Drops an index from the MySQL db
+            </summary>
+            <param name="connection">The MySQL connection to attempt the drop on</param>
+            <param name="table_name">The MySQL table to drop</param>
+            <param name="index_name">The MySQL index to drop</param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLSchemaTools.ExecuteScript(MySql.Data.MySqlClient.MySqlConnection,System.String)">
+            <summary>
+            Executes the given script on the database connected to.
+            </summary>
+            <param name="connection"></param>
+            <param name="sql"></param>     
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLSchemaTools.GeoToDB(System.Double)">
+            <summary>
+            Converts a lon or lat value to a db storable value
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLSchemaTools.DBToGeo(System.Int32)">
+            <summary>
+            Converts a db storable value to a lon or lat
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLSchemaTools.CreateAndDetect(MySql.Data.MySqlClient.MySqlConnection)">
+            <summary>
+            Creates the entire schema but also detects existing tables.
+            </summary>
+            <param name="connection">The MySQLConnection to perform detection and creation on</param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.MySQLSchemaTools.Drop(MySql.Data.MySqlClient.MySqlConnection)">
+            <summary>
+            Drops the entire schema.
+            </summary>
+            <param name="connection">The MySQLConnection to drop tables from</param>
+        </member>
+        <member name="T:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget">
+            <summary>
+            A data processor target for the MySQL schema.
+            </summary>
+        </member>
+        <member name="P:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.OwnsConnection">
+            <summary>
+            Does this object own it's own connection?
+            </summary>
+        </member>
+        <member name="P:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.SupportsConcurrentCopies">
+            <summary>
+            Indicates if the MySQL target supports concurrent copies
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget._connection_string">
+            <summary>
+            Holds the connection string.
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget._connection_owner">
+            <summary>
+            Was the connection created by this object?
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget._connection">
+            <summary>
+            Holds the connection.
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget._create_and_detect_schema">
+            <summary>
+            Flag that indicates if the schema needs to be created if not present.
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.REPLACE_NODE_BATCH_PREFIX">
+            <summary>
+            MySQL command string to prefix a batch node insertion
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.REPLACE_NODE_BATCH_VALUES">
+            <summary>
+            MySQL command string to be attached to a batch node insertion prefix
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.REPLACE_NODE">
+            <summary>
+            MySQL command string to insert or replace a single node
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.REPLACE_NODE_TAGS_BATCH_PREFIX">
+            <summary>
+            MySQL command string to prefix a batch insert or replace of node tags
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.REPLACE_NODE_TAGS_BATCH_VALUES">
+            <summary>
+            MySQL command string to be attached to a batch insertion or replace of node tags
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.REPLACE_NODE_TAGS">
+            <summary>
+            MySQL command string to insert or replace a single node tag
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.REPLACE_WAY_BATCH_PREFIX">
+            <summary>
+            MySQL command string to prefix a batch way insertion
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.REPLACE_WAY_BATCH_VALUES">
+            <summary>
+            MySQL command string to be attached to a batch way insertion prefix
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.REPLACE_WAY">
+            <summary>
+            MySQL command string to insert or replace a single way
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.REPLACE_WAY_TAGS_BATCH_PREFIX">
+            <summary>
+            MySQL command string to prefix a batch insert or replace of way tags
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.REPLACE_WAY_TAGS_BATCH_VALUES">
+            <summary>
+            MySQL command string to be attached to a batch insertion or replace of way tags
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.REPLACE_WAY_TAGS">
+            <summary>
+            MySQL command string to insert or replace a single way tag
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.REPLACE_WAY_NODES_BATCH_PREFIX">
+            <summary>
+            MySQL command string to prefix a batch insert or replace of way nodes
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.REPLACE_WAY_NODES_BATCH_VALUES">
+            <summary>
+            MySQL command string to be attached to a batch insertion or replace of way nodes
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.REPLACE_WAY_NODES">
+            <summary>
+            MySQL command string to insert or replace a single way node
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.REPLACE_RELATION_BATCH_PREFIX">
+            <summary>
+            MySQL command string to prefix a batch relation insertion
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.REPLACE_RELATION_BATCH_VALUES">
+            <summary>
+            MySQL command string to be attached to a batch relation insertion prefix
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.REPLACE_RELATION">
+            <summary>
+            MySQL command string to insert or replace a single relation
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.REPLACE_RELATION_TAGS_BATCH_PREFIX">
+            <summary>
+            MySQL command string to prefix a batch insert or replace of relation tags
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.REPLACE_RELATION_TAGS_BATCH_VALUES">
+            <summary>
+            MySQL command string to be attached to a batch insertion or replace of relation tags
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.REPLACE_RELATION_TAGS">
+            <summary>
+            MySQL command string to insert or replace a single relation tag
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.REPLACE_RELATION_MEMBERS_BATCH_PREFIX">
+            <summary>
+            MySQL command string to prefix a batch insert or replace of relation members
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.REPLACE_RELATION_MEMBERS_BATCH_VALUES">
+            <summary>
+            MySQL command string to be attached to a batch insertion or replace of relation members
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.REPLACE_RELATION_MEMBERS">
+            <summary>
+            MySQL command string to insert or replace a single relation member
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget._replaceNodeBatchCommand">
+            <summary>
+            MySQL command to insert or replace nodes in batch mode
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget._replaceNodeFlushCommand">
+            <summary>
+            MySQL command to insert or replace a node in flush mode
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget._replaceNodeTagsBatchCommand">
+            <summary>
+            MySQL command to insert or replace node tags in batch mode
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget._replaceNodeTagFlushCommand">
+            <summary>
+            MySQL command to insert or replace a node tag in flush mode
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget._replaceWayBatchCommand">
+            <summary>
+            MySQL command to insert or replace a way in batch mode
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget._replaceWayFlushCommand">
+            <summary>
+            MySQL command to insert or replace a way in flush mode
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget._replaceWayTagsBatchCommand">
+            <summary>
+            MySQL command to insert or replace way tags in batch mode
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget._replaceWayTagFlushCommand">
+            <summary>
+            MySQL command to insert or replace a way tag in flush mode
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget._replaceWayNodesBatchCommand">
+            <summary>
+            MySQL command to insert or replace way nodes in batch mode
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget._replaceWayNodeFlushCommand">
+            <summary>
+            MySQL command to insert or replace a way node in flush mode
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget._replaceRelationsBatchCommand">
+            <summary>
+            MySQL command to insert or replace relations in batch mode
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget._replaceRelationFlushCommand">
+            <summary>
+            MySQL command to insert or replace a relation in flush mode
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget._replaceRelationTagsBatchCommand">
+            <summary>
+            MySQL command to insert or replace relation tags in batch mode
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget._replaceRelationTagFlushCommand">
+            <summary>
+            MySQL command to insert or replace a relation tag in flush mode
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget._replaceRelationMembersBatchCommand">
+            <summary>
+            MySQL command to insert or replace relation members in batch mode
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget._replaceRelationMemberFlushCommand">
+            <summary>
+            MySQL command to insert or replace a relation member in flush mode
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.BATCH_NODES_COUNT">
+            <summary>
+            The number of nodes to process during a batch push to the db
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget._cached_nodes">
+            <summary>
+            The collection of cached nodes
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget._total_node_count">
+            <summary>
+            The total number of nodes pushed to the db
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.BATCH_NODE_TAGS_COUNT">
+            <summary>
+            The number of node tags to process during a batch push to the db
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget._cached_node_tags">
+            <summary>
+            The collection of cached node tags
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget._total_node_tags_count">
+            <summary>
+            The total number of node tags pushed to the db
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.BATCH_WAYS_COUNT">
+            <summary>
+            The number of ways to process during a batch push to the db
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget._cached_ways">
+            <summary>
+            The collection of cached ways
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget._total_way_count">
+            <summary>
+            The total number of ways pushed to the db
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.BATCH_WAY_TAGS_COUNT">
+            <summary>
+            The number of way tags to process during a batch push to the db
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget._cached_way_tags">
+            <summary>
+            The collection of cached way tags
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget._total_way_tags_count">
+            <summary>
+            The total number of way tags pushed to the db
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.BATCH_WAY_NODES_COUNT">
+            <summary>
+            The number of way nodes to process during a batch push to the db
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget._cached_way_nodes">
+            <summary>
+            The collection of cached way nodes
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget._total_way_nodes_count">
+            <summary>
+            The total number of way nodes pushed to the db
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.BATCH_RELATIONS_COUNT">
+            <summary>
+            The number of relations to process during a batch push to the db
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget._cached_relations">
+            <summary>
+            The collection of cached relations
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget._total_relation_count">
+            <summary>
+            The total number of relations pushed to the db
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.BATCH_RELATION_TAGS_COUNT">
+            <summary>
+            The number of relation tags to process during a batch push to the db
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget._cached_relation_tags">
+            <summary>
+            The collection of cached relation tags
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget._total_relation_tags_count">
+            <summary>
+            The total number of relation tags pushed to the db
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.BATCH_RELATION_MEMBERS_COUNT">
+            <summary>
+            The number of relation members to process during a batch push to the db
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget._cached_relation_members">
+            <summary>
+            The collection of cached relation members
+            </summary>
+        </member>
+        <member name="F:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget._total_relation_members_count">
+            <summary>
+            The total number of relation members pushed to the db
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.#ctor(MySql.Data.MySqlClient.MySqlConnection,System.String,System.Boolean)">
+            <summary>
+            Creates a new MySQL target
+            </summary>
+            <param name="connection">The MySQL connection to use</param>
+            <param name="password">The password used to connect to the MySQL data base</param>
+            <param name="create_schema">Should we detect if the db tables exist and attempt to create them?</param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.#ctor(System.String,System.Boolean)">
+            <summary>
+            Creates a new MySQL target
+            </summary>
+            <param name="connection_string">The MySQL connection string to use</param>
+            <param name="create_schema">Should we detect if the db tables exist and attempt to create them?</param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.#ctor(System.String,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Creates a new MySQL target
+            </summary>
+            <param name="hostname">The hostname of the MySQL server</param>
+            <param name="database">The MySQL schema name</param>
+            <param name="username">The username to connect with, sent over plain text</param>
+            <param name="password">The password to connect with, sent over plain text</param>
+            <param name="create_schema">Should we detect if the db tables exist and attempt to create them?</param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.Initialize">
+            <summary>
+            Initializes this target.
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.InitializeCacheAndCommands(MySql.Data.MySqlClient.MySqlConnection)">
+            <summary>
+            Initializes all MySQL commands and caches
+            </summary>
+            <param name="connection">The MySQL connection to use</param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.InitializeReplaceNodeCacheAndCommand(MySql.Data.MySqlClient.MySqlConnection)">
+            <summary>
+            Initializes the replace node command and cache
+            </summary>
+            <param name="connection">The MySQL connection to use</param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.InitializeReplaceNodeTagCacheAndCommand(MySql.Data.MySqlClient.MySqlConnection)">
+            <summary>
+            Initializes the replace node tag command and cache
+            </summary>
+            <param name="connection">The MySQL connection to use</param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.InitializeReplaceWayCacheAndCommand(MySql.Data.MySqlClient.MySqlConnection)">
+            <summary>
+            Initializes the replace way command and cache
+            </summary>
+            <param name="connection">The MySQL connection to use</param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.InitializeReplaceWayTagsCacheAndCommand(MySql.Data.MySqlClient.MySqlConnection)">
+            <summary>
+            Initializes the replace way tags command and cache
+            </summary>
+            <param name="connection">The MySQL connection to use</param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.InitializeReplaceWayNodesCacheAndCommand(MySql.Data.MySqlClient.MySqlConnection)">
+            <summary>
+            Initializes the replace way nodes command and cache
+            </summary>
+            <param name="connection">The MySQL connection to use</param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.InitializeReplaceRelationCacheAndCommand(MySql.Data.MySqlClient.MySqlConnection)">
+            <summary>
+            Initializes the replace relation command and cache
+            </summary>
+            <param name="connection">The MySQL connection to use</param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.InitializeReplaceRelationTagsCacheAndCommand(MySql.Data.MySqlClient.MySqlConnection)">
+            <summary>
+            Initializes the replace relation tags command and cache
+            </summary>
+            <param name="connection">The MySQL connection to use</param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.InitializeReplaceRelationMembersCacheAndCommand(MySql.Data.MySqlClient.MySqlConnection)">
+            <summary>
+            Initializes the replace relation members command and cache
+            </summary>
+            <param name="connection">The MySQL connection to use</param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.AddNode(OsmSharp.Osm.Node)">
+            <summary>
+            Adds a node.
+            </summary>
+            <param name="node">The node to add</param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.AddNodeTags(OsmSharp.Osm.Node)">
+            <summary>
+            Adds a nodes tags
+            </summary>
+            <param name="node">The node to add tags to the db from</param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.AddWay(OsmSharp.Osm.Way)">
+            <summary>
+            Adds a way.
+            </summary>
+            <param name="way">The way to add to the db</param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.AddWayTags(OsmSharp.Osm.Way)">
+            <summary>
+            Adds a ways tags
+            </summary>
+            <param name="way">The way to add tags to the db from</param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.AddWayNodes(OsmSharp.Osm.Way)">
+            <summary>
+            Adds a ways member nodes
+            </summary>
+            <param name="way">The way to add member nodes to the db from</param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.AddRelation(OsmSharp.Osm.Relation)">
+            <summary>
+            Adds a relation.
+            </summary>
+            <param name="relation">The relation to add to the db</param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.AddRelationTags(OsmSharp.Osm.Relation)">
+            <summary>
+            Adds a relations tags
+            </summary>
+            <param name="relation">The relation to add tags to the db from</param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.AddRelationMembers(OsmSharp.Osm.Relation)">
+            <summary>
+            Adds a relations members
+            </summary>
+            <param name="relation">The relation to add members to the db from</param>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.BatchAddNodes(System.Collections.Generic.List{OsmSharp.Osm.Node})">
+            <summary>
+            Batch adds the queued nodes to the MySQL db
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.FlushAddNodes(System.Collections.Generic.List{OsmSharp.Osm.Node})">
+            <summary>
+            Flushes out the remaining nodes
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.BatchAddNodeTags(System.Collections.Generic.List{System.Tuple{System.Nullable{System.Int64},OsmSharp.Collections.Tags.Tag}})">
+            <summary>
+            Batch adds the queued node tags to the MySQL db
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.FlushAddNodeTags(System.Collections.Generic.List{System.Tuple{System.Nullable{System.Int64},OsmSharp.Collections.Tags.Tag}})">
+            <summary>
+            Flushes out remaining node tags
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.BatchAddWays(System.Collections.Generic.List{OsmSharp.Osm.Way})">
+            <summary>
+            Batch adds the ways to the MySQL db
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.FlushAddWays(System.Collections.Generic.List{OsmSharp.Osm.Way})">
+            <summary>
+            Flushes out remaining ways
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.BatchAddWayTags(System.Collections.Generic.List{System.Tuple{System.Nullable{System.Int64},OsmSharp.Collections.Tags.Tag}})">
+            <summary>
+            Batch adds the way tags to the MySQL db
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.FlushAddWayTags(System.Collections.Generic.List{System.Tuple{System.Nullable{System.Int64},OsmSharp.Collections.Tags.Tag}})">
+            <summary>
+            Flushes out remaining way tags
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.BatchAddWayNodes(System.Collections.Generic.List{System.Tuple{System.Nullable{System.Int64},System.Nullable{System.Int64},System.Nullable{System.Int64}}})">
+            <summary>
+            Batch adds the way nodes to the MySQL db
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.FlushAddWayNodes(System.Collections.Generic.List{System.Tuple{System.Nullable{System.Int64},System.Nullable{System.Int64},System.Nullable{System.Int64}}})">
+            <summary>
+            Flushes out remaining way tags
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.BatchAddRelations(System.Collections.Generic.List{OsmSharp.Osm.Relation})">
+            <summary>
+            Batch adds the relations to the MySQL db
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.FlushAddRelations(System.Collections.Generic.List{OsmSharp.Osm.Relation})">
+            <summary>
+            Flushes out remaining relations
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.BatchAddRelationTags(System.Collections.Generic.List{System.Tuple{System.Nullable{System.Int64},OsmSharp.Collections.Tags.Tag}})">
+            <summary>
+            Batch adds the relation tags to the MySQL db
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.FlushAddRelationTags(System.Collections.Generic.List{System.Tuple{System.Nullable{System.Int64},OsmSharp.Collections.Tags.Tag}})">
+            <summary>
+            Flushes out remaining relation tags
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.BatchAddRelationMembers(System.Collections.Generic.List{System.Tuple{System.Nullable{System.Int64},OsmSharp.Osm.RelationMember,System.Nullable{System.Int64}}})">
+            <summary>
+            Batch adds the relation members to the MySQL db
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.FlushAddRelationMembers(System.Collections.Generic.List{System.Tuple{System.Nullable{System.Int64},OsmSharp.Osm.RelationMember,System.Nullable{System.Int64}}})">
+            <summary>
+            Flushes out remaining relation members
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.ConcurrentCopy">
+            <summary>
+            Returns a copy of the MySQL target that will safely allow
+            concurrent writing alongside the MySQL target it was copied
+            from
+            </summary>
+            <returns>The concurrent safe MySQL target</returns>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.Close">
+            <summary>
+            Closes this target.
+            </summary>
+        </member>
+        <member name="M:OsmSharp.Data.MySQL.Osm.Streams.MySQLOsmStreamTarget.Flush">
+            <summary>
+            Flushes all data.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,6 @@
+# unignore meta files, dlls, pdbs, mdbs and xml
+!*.meta
+!*.dll
+!*.mdb
+!*.pdb
+!*.xml
