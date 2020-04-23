@@ -126,7 +126,7 @@ namespace Maps.Geographical.Simplification
                 }
             }
 
-            var simplifiedOuter = DoSimplify(polygon, PolygonMinimum, keep[0]);
+            var simplifiedOuter = DoSimplify(polygon, PolygonMinimum, keep?[0]);
             var simplifiedInners = new List<GeodeticPolygon2d>();
 
             // polygons holes are individually simplified
