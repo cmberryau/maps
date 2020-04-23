@@ -250,19 +250,31 @@ namespace Maps.Geographical.Features
 
             var hostCount = host.Count;
             var result = new bool[hostCount];
-            var subjectCount = subject.Count;
             var self = host.Equals(subject);
 
-            for (var i = 0; i < hostCount; ++i)
+            // if the host and subject are equal, they match on every coordinate
+            if (self)
             {
-                var a = host[i];
-
-                for (var j = 0; j < subjectCount; ++j)
+                for (var i = 0; i < hostCount; ++i)
                 {
-                    if (!(self && i == j) && a == subject[j])
+                    result[i] = true;
+                }
+            }
+            else
+            {
+                var subjectCount = subject.Count;
+
+                for (var i = 0; i < hostCount; ++i)
+                {
+                    var a = host[i];
+
+                    for (var j = 0; j < subjectCount; ++j)
                     {
-                        result[i] = true;
-                        break;
+                        if (a == subject[j])
+                        {
+                            result[i] = true;
+                            break;
+                        }
                     }
                 }
             }
