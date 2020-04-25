@@ -66,7 +66,7 @@ namespace Maps.Tests.IO.Collections
                 Assert.IsNotNull(actualCollection);
 
                 // confirm file size is what we expect
-                Assert.AreEqual(761L, file.Length);
+                Assert.AreEqual(835L, file.Length);
             }
 
             File.Delete(FullPath);

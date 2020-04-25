@@ -209,7 +209,7 @@ namespace Maps.Tests.IO.Features
                 TestUtilities.AssertThatAreasAreEqual(expectedArea, actualArea);
 
                 // confirm file size is what we expect
-                Assert.AreEqual(48L, file.Length);
+                Assert.AreEqual(59L, file.Length);
             }
 
             File.Delete(FullPath);
@@ -253,7 +253,7 @@ namespace Maps.Tests.IO.Features
                 TestUtilities.AssertThatAreasAreEqual(expectedArea, actualArea);
 
                 // confirm file size is what we expect
-                Assert.AreEqual(92L, file.Length);
+                Assert.AreEqual(103L, file.Length);
             }
 
             File.Delete(FullPath);
@@ -297,7 +297,7 @@ namespace Maps.Tests.IO.Features
                 TestUtilities.AssertThatAreasAreEqual(expectedArea, actualArea);
 
                 // confirm file size is what we expect
-                Assert.AreEqual(139L, file.Length);
+                Assert.AreEqual(150L, file.Length);
             }
 
             File.Delete(FullPath);
@@ -341,7 +341,7 @@ namespace Maps.Tests.IO.Features
                 TestUtilities.AssertThatAreasAreEqual(expectedArea, actualArea);
 
                 // confirm file size is what we expect
-                Assert.AreEqual(67L, file.Length);
+                Assert.AreEqual(78L, file.Length);
             }
 
             File.Delete(FullPath);

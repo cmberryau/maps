@@ -173,7 +173,7 @@ namespace Maps.Tests.IO.Features
                 }
 
                 // confirm file size is what we expect
-                Assert.AreEqual(47L, file.Length);
+                Assert.AreEqual(49L, file.Length);
             }
 
             File.Delete(FullPath);

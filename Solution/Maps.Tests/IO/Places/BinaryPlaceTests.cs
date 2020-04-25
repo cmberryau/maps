@@ -108,7 +108,7 @@ namespace Maps.Tests.IO.Places
                     expectedPlace.Coordinate, actualPlace.Coordinate);
 
                 // confirm file size is what we expect
-                Assert.AreEqual(15L, file.Length);
+                Assert.AreEqual(17L, file.Length);
             }
 
             File.Delete(FullPath);
@@ -156,7 +156,7 @@ namespace Maps.Tests.IO.Places
                     expectedPlace.Coordinate, actualPlace.Coordinate);
 
                 // confirm file size is what we expect
-                Assert.AreEqual(34L, file.Length);
+                Assert.AreEqual(36L, file.Length);
             }
 
             File.Delete(FullPath);
