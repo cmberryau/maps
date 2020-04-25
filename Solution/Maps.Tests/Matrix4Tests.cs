@@ -655,24 +655,28 @@ namespace Maps.Tests
         [Test]
         public void TestGetHashCodeMethod()
         {
-            var AHash = A.a.GetHashCode() ^
-                       (A.b.GetHashCode() << 2) ^
-                       (A.c.GetHashCode() << 4) ^
-                       (A.d.GetHashCode() << 6) ^
-                       (A.e.GetHashCode() << 8) ^
-                       (A.f.GetHashCode() << 10) ^
-                       (A.g.GetHashCode() << 12) ^
-                       (A.h.GetHashCode() << 14) ^
-                       (A.i.GetHashCode() << 16) ^
-                       (A.j.GetHashCode() << 18) ^
-                       (A.k.GetHashCode() << 20) ^
-                       (A.l.GetHashCode() << 22) ^
-                       (A.m.GetHashCode() << 24) ^
-                       (A.n.GetHashCode() << 26) ^
-                       (A.o.GetHashCode() << 28) ^
-                       (A.p.GetHashCode() << 30);
+            var hash = A.a.GetHashCode();
 
-            Assert.AreEqual(AHash, A.GetHashCode());
+            unchecked
+            {
+                hash = (hash * 397) ^ A.b.GetHashCode();
+                hash = (hash * 397) ^ A.c.GetHashCode();
+                hash = (hash * 397) ^ A.d.GetHashCode();
+                hash = (hash * 397) ^ A.e.GetHashCode();
+                hash = (hash * 397) ^ A.f.GetHashCode();
+                hash = (hash * 397) ^ A.g.GetHashCode();
+                hash = (hash * 397) ^ A.h.GetHashCode();
+                hash = (hash * 397) ^ A.i.GetHashCode();
+                hash = (hash * 397) ^ A.j.GetHashCode();
+                hash = (hash * 397) ^ A.k.GetHashCode();
+                hash = (hash * 397) ^ A.l.GetHashCode();
+                hash = (hash * 397) ^ A.m.GetHashCode();
+                hash = (hash * 397) ^ A.n.GetHashCode();
+                hash = (hash * 397) ^ A.o.GetHashCode();
+                hash = (hash * 397) ^ A.p.GetHashCode();
+            }
+
+            Assert.AreEqual(hash, A.GetHashCode());
         }
     }
 }

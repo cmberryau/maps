@@ -541,15 +541,19 @@ namespace Maps.Tests
         [Test]
         public void TestGetHashCodeMethod()
         {
-            var AHash = A.a.GetHashCode() ^
-                       (A.b.GetHashCode() << 3) ^
-                       (A.c.GetHashCode() << 6) ^
-                       (A.d.GetHashCode() << 9) ^
-                       (A.e.GetHashCode() << 12) ^
-                       (A.f.GetHashCode() << 15) ^
-                       (A.g.GetHashCode() << 18) ^
-                       (A.h.GetHashCode() << 21) ^
-                       (A.i.GetHashCode() << 24);
+            var AHash = A.a.GetHashCode();
+
+            unchecked
+            {
+                AHash = (AHash * 397) ^ A.b.GetHashCode();
+                AHash = (AHash * 397) ^ A.c.GetHashCode();
+                AHash = (AHash * 397) ^ A.d.GetHashCode();
+                AHash = (AHash * 397) ^ A.e.GetHashCode();
+                AHash = (AHash * 397) ^ A.f.GetHashCode();
+                AHash = (AHash * 397) ^ A.g.GetHashCode();
+                AHash = (AHash * 397) ^ A.h.GetHashCode();
+                AHash = (AHash * 397) ^ A.i.GetHashCode();
+            }
 
             Assert.AreEqual(AHash, A.GetHashCode());
         }

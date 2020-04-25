@@ -2386,10 +2386,10 @@ namespace Maps.Tests
             Assert.AreEqual(@"[72.0023115935732]d,[67.7645132467822]d", a.ToString());
 
             a = Vector2d.PositiveInfinity;
-            Assert.AreEqual(@"[Infinity]d,[Infinity]d", a.ToString());
+            Assert.AreEqual("[\u221E]d,[\u221E]d", a.ToString());
 
             a = Vector2d.NegativeInfinity;
-            Assert.AreEqual(@"[-Infinity]d,[-Infinity]d", a.ToString());
+            Assert.AreEqual("[-\u221E]d,[-\u221E]d", a.ToString());
         }
 
         [Test]
