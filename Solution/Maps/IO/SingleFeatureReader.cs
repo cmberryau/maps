@@ -64,8 +64,7 @@ namespace Maps.IO
             // if we got something, fill up the Current property
             if (binaryFeature != null)
             {
-                throw new NotImplementedException();
-                //Current = binaryFeature.ToFeature();
+                Current = binaryFeature.ToFeature();
                 return true;
             }
 

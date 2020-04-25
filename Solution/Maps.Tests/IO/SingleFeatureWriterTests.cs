@@ -90,7 +90,7 @@ namespace Maps.Tests.IO
                     writer.Write(expectedPlace, null);
 
                     // confirm file size is what we expect
-                    Assert.AreEqual(16L, file.Length);
+                    Assert.AreEqual(18L, file.Length);
                 }
             }
 
@@ -143,7 +143,7 @@ namespace Maps.Tests.IO
                     writer.Write(expectedSegment, null);
 
                     // confirm file size is what we expect
-                    Assert.AreEqual(29L, file.Length);
+                    Assert.AreEqual(31L, file.Length);
                 }
             }
 
@@ -194,7 +194,7 @@ namespace Maps.Tests.IO
                     writer.Write(expectedArea, null);
 
                     // confirm file size is what we expect
-                    Assert.AreEqual(49L, file.Length);
+                    Assert.AreEqual(60L, file.Length);
                 }
             }
 
@@ -248,7 +248,7 @@ namespace Maps.Tests.IO
                     }
 
                     // confirm file size is what we expect
-                    Assert.AreEqual(751L, file.Length);
+                    Assert.AreEqual(825L, file.Length);
                 }
             }
 

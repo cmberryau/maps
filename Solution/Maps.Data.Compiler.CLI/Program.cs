@@ -24,7 +24,7 @@ namespace Maps.Data.Compiler.CLI
             "Port=5432;" +
             "Database=osm;" +
             "User Id=osmuser;" +
-            "Password=osmuserpassword;" +
+            "Password=osmuser;" +
             $"ApplicationName={Assembly.GetExecutingAssembly()}";
 
         /// <summary>

@@ -16,7 +16,7 @@ namespace Maps.Data.OpenStreetMap.Tests
             "Port=5432;" +
             "Database=osm;" +
             "User Id=osmuser;" +
-            "Password=osmuserpassword;" +
+            "Password=osmuser;" +
             $"ApplicationName={Assembly.GetExecutingAssembly()}";
 
         /// <inheritdoc />

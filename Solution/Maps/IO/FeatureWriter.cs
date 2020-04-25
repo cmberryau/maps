@@ -24,16 +24,11 @@ namespace Maps.IO
         /// <param name="destination">The destination stream</param>
         /// <param name="sideData">The side data target</param>
         /// <exception cref="ArgumentNullException">Thrown if any argument is null</exception>
-        public FeatureWriter(Stream destination, ISideData sideData)
+        public FeatureWriter(Stream destination, ISideData sideData = null)
         {
             if (destination == null)
             {
                 throw new ArgumentNullException(nameof(destination));
-            }
-
-            if (sideData == null)
-            {
-                throw new ArgumentNullException(nameof(sideData));
             }
 
             if (!destination.CanWrite)

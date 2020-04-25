@@ -40,7 +40,7 @@ namespace Maps.IO
         /// <param name="feature">The feature to write</param>
         /// <param name="sideData">The side data target</param>
         /// <exception cref="ArgumentNullException">Thrown if any argument is null</exception>
-        public void Write(Feature feature, ISideData sideData)
+        public void Write(Feature feature, ISideData sideData = null)
         {
             if (_disposed)
             {
@@ -50,11 +50,6 @@ namespace Maps.IO
             if (feature == null)
             {
                 throw new ArgumentNullException(nameof(feature));
-            }
-
-            if (sideData == null)
-            {
-                throw new ArgumentNullException(nameof(sideData));
             }
 
             if (!_destinationStream.CanWrite)

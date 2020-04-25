@@ -31,17 +31,13 @@ namespace Maps.IO
         /// <param name="sideData">The strings dictionary</param>
         /// <exception cref="ArgumentNullException">Thrown if any argument is null</exception>
         /// <exception cref="ArgumentException">Thrown if source cannot be read</exception>
-        public FeatureReader(Stream source, ISideData sideData)
+        public FeatureReader(Stream source, ISideData sideData = null)
         {
             if (source == null)
             {
                 throw new ArgumentNullException(nameof(source));
             }
 
-            if (sideData == null)
-            {
-                throw new ArgumentNullException(nameof(sideData));
-            }
 
             if (!source.CanRead)
             {
