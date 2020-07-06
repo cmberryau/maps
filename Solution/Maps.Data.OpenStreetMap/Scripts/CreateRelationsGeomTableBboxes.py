@@ -45,7 +45,8 @@ for row in rows:
                       FROM relation_members
                       WHERE relation_members.relation_id = %(id)s
                           AND (relation_members.member_type = 'W'))))""", {'id' : row[0],})
-    except:
-        print("Unable to execute PostgreSQL command")
+    except Exception as e:
+        print(e)
+        exit(0)
 
 conn.commit()
